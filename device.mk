@@ -354,6 +354,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
 
+# TextClassifier smart selection model files
+PRODUCT_PACKAGES += \
+    textclassifier.bundle1
+
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service.basic
