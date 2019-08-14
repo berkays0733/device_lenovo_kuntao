@@ -27,4 +27,6 @@
          as not all devices can support dynamic MAC address change.  -->
     <bool name="config_wifi_support_connected_mac_randomization">true</bool>
 
+    <string name="viper_maintainer_summary">Sohit</string>
+
 </resources>
