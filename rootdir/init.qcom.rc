@@ -147,10 +147,26 @@ on post-fs-data
     mkdir /data/vendor/perfd 2770 root system
     rm /data/vendor/perfd/default_values
 
+    # Create /data/vendor/time folder for time-services
+    mkdir /data/vendor/time/ 0700 system system
+
     # Mark the copy complete flag to not completed
     write /data/vendor/radio/copy_complete 0
     chown radio radio /data/vendor/radio/copy_complete
     chmod 0660 /data/vendor/radio/copy_complete
+
+    # copy prebuilt qcril.db files always
+    copy /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril_prebuilt.db
+    chown radio radio /data/vendor/radio/qcril_prebuilt.db
+    chmod 0660 /data/vendor/radio/qcril_prebuilt.db
+
+    # File flags for prebuilt ril db file
+    write /data/vendor/radio/prebuilt_db_support 1
+    chown radio radio /data/vendor/radio/prebuilt_db_support
+    chmod 0400 /data/vendor/radio/prebuilt_db_support
+    write /data/vendor/radio/db_check_done 0
+    chown radio radio /data/vendor/radio/db_check_done
+    chmod 0660 /data/vendor/radio/db_check_done
 
     # set aggressive read ahead for dm-0 and dm-1 during boot up
     write /sys/block/dm-0/queue/read_ahead_kb 2048
@@ -173,6 +189,12 @@ on property:vold.decrypt=trigger_restart_framework
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
+on property:persist.vendor.radio.atfwd.start=true
+    start vendor.atfwd
+
+ on property:persist.vendor.radio.atfwd.start=false
+    stop vendor.atfwd
+
 service vendor.cnd /vendor/bin/cnd
     class main
     user system
@@ -181,7 +203,7 @@ service vendor.cnd /vendor/bin/cnd
 service dpmQmiMgr /vendor/bin/dpmQmiMgr
     class main
     user system
-    group radio system
+    group system
 
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
@@ -216,7 +238,7 @@ service vendor.ipacm /vendor/bin/ipacm
 service vendor.dataqti /vendor/bin/qti
     class main
     user radio
-    group radio oem_2901 usb net_admin
+    group radio oem_2901 diag usb net_admin
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.
@@ -253,7 +275,7 @@ on property:ro.vendor.ril.mbn_copy_completed=1
 service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     class late_start
     user root
-    group root system
+    group root system wakelock graphics
     disabled
     oneshot
 
@@ -265,10 +287,10 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
     user system
     group system radio
 
-service ril-daemon2 /vendor/bin/hw/rild -c 2
+service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
-    group radio cache inet misc audio log readproc wakelock
+    group radio cache inet misc audio sdcard_r sdcard_rw diag log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
 service charger /charger
