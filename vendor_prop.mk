@@ -48,7 +48,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.camera.display.umax=1920x1080 \
     persist.vendor.camera.display.lmax=1280x720 \
     camera.lowpower.record.enable=1 \
-    vidc.enc.dcvs.extra-buff-count=2
+    vidc.enc.dcvs.extra-buff-count=2 \
+    persist.camera.HAL3.enabled=1
 
 # Charger
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -123,7 +124,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
-	persist.vendor.radio.atfwd.start=true \
+    persist.vendor.radio.atfwd.start=true \
     persist.vendor.data.mode=concurrent \
     ro.vendor.use_data_netmgrd=true \
     persist.data.netmgrd.qos.enable=true \
