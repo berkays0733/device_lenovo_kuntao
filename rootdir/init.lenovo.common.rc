@@ -15,6 +15,13 @@ on property:vold.decrypt=trigger_restart_framework
     start vfmservice
 
 on boot
+    # Dynamic-CABC feature
+    chown system system /sys/class/graphics/fb0/cabc_mode
+    # ACL feature
+    chown system system /sys/class/graphics/fb0/acl_mode
+    # Seed feature
+    chown system system /sys/class/graphics/fb0/color_profile
+
     # Double tap
     chown system system /sys/board_properties/tpd_suspend_status
     chmod 0664 /sys/board_properties/tpd_suspend_status
