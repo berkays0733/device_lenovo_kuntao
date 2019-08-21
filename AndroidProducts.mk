@@ -15,4 +15,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/viper_kuntao.mk
+    $(LOCAL_DIR)/colt_kuntao.mk
