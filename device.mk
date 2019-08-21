@@ -19,9 +19,6 @@ DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(LOCAL_PATH)/overlay-lineage
 
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
-
 # Properties
 -include $(LOCAL_PATH)/vendor_prop.mk
 
@@ -125,9 +122,6 @@ PRODUCT_PACKAGES += \
     android.hardware.drm@1.1-service.clearkey
 
 # Fingerprint sensor
-PRODUCT_PACKAGES += \
-    DeviceSettings
-
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.0-service.kuntao
 
@@ -355,14 +349,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
-
-# Touch features
-PRODUCT_PACKAGES += \
-    vendor.lineage.touch@1.0-service.kuntao
-
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
 
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
