@@ -127,6 +127,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.atfwd.start=true \
     persist.vendor.data.mode=concurrent \
     ro.vendor.use_data_netmgrd=true \
+    persist.vendor.radio.add_power_save=1 \
     persist.data.netmgrd.qos.enable=true \
     persist.vendor.radio.aosp_usr_pref_sel=true
 
