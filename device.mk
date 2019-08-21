@@ -383,6 +383,7 @@ PRODUCT_PACKAGES += \
 
 # WiFi
 PRODUCT_PACKAGES += \
+    libcld80211 \
     libwpa_client \
     wcnss_service
 
