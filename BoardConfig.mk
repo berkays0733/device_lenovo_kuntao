@@ -95,7 +95,7 @@ ifeq ($(HOST_OS),linux)
 endif
 
 # Lineage Hardware
-JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(DEVICE_PATH)/lineagehw|**/*.java
+# JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(DEVICE_PATH)/lineagehw|**/*.java
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
