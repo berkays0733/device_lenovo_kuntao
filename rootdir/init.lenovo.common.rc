@@ -3,9 +3,9 @@ service smart_charger /vendor/bin/smart_charger
     user root
 
 service vfmservice /vendor/bin/vfmService
+    class main
     user system
     group system
-    class main
     disabled
 
 on property:vendor.sys.listeners.registered=true
