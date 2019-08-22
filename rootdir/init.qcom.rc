@@ -281,7 +281,12 @@ service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
 
 on property:sys.boot_completed=1
     start qcom-post-boot
+    stop vendor.audio-hal-2-0
+    stop vendor.media.omx
     start vendor.audio-hal-2-0
+    start vendor.media.omx
+    restart vendor.audio-hal-2-0
+    restart vendor.media.omx
 
 service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
