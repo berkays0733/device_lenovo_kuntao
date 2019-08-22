@@ -49,3 +49,6 @@
 # Touchscreen
 /sys/board_properties/tpd_glove_status                                     u:object_r:sysfs_touchpanel:s0
 /sys/board_properties/tpd_suspend_status                                   u:object_r:sysfs_touchpanel:s0
+
+# Usb hal
+/vendor/bin/hw/android\.hardware\.usb@1\.0-service\.basic              u:object_r:hal_usb_default_exec:s0
