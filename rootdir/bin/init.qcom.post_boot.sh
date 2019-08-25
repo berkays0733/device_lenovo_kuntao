@@ -239,6 +239,7 @@ function configure_zram_parameters() {
     fi
 
     if [ -f /sys/block/zram0/disksize ]; then
+        echo 1 > /sys/block/zram0/use_dedup
         echo 4 > /sys/block/zram0/max_comp_streams
         if [ $MemTotal -le 524288 ]; then
             echo 402653184 > /sys/block/zram0/disksize
