@@ -398,6 +398,10 @@ on property:sys.boot_completed=1
     restart vendor.audio-hal-2-0
     restart vendor.media.omx
 
+on property:init.svc.qcom-post-boot=stopped
+    # Set min gpu freq as 320mhz
+    write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 320000000
+
 on property:ro.vendor.ril.mbn_copy_completed=1
     write /data/vendor/radio/copy_complete 1
 
