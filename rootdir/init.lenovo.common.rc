@@ -22,6 +22,10 @@ on boot
     # Seed feature
     chown system system /sys/class/graphics/fb0/color_profile
 
+    #lenovo-sw weiweij added for file point access
+    chown system system /sys/class/power_supply/ext-charger/otg_usb_short
+    chmod 0666 /sys/class/power_supply/ext-charger/otg_usb_short
+
     # Double tap
     chown system system /sys/board_properties/tpd_suspend_status
     chmod 0664 /sys/board_properties/tpd_suspend_status
@@ -45,6 +49,30 @@ on post-fs
     # G-sensor autocalibration
     chown system system /persist/GSSET.txt
     chmod 0660 /persist/GSSET.txt
+
+    #lenovo-sw weiweij added for file point access
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/charge_enabled
+    chmod 0664 /sys/class/power_supply/ext-charger/charge_enabled
+    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/charge_enabled
+    chmod 0664 /sys/class/power_supply/ext-charger-dual/charge_enabled
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/battery_charging_enabled
+    chmod 0664 /sys/class/power_supply/ext-charger/battery_charging_enabled
+    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/battery_charging_enabled
+    chmod 0664 /sys/class/power_supply/ext-charger-dual/battery_charging_enabled
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/current_max
+    chmod 0664 /sys/class/power_supply/ext-charger/current_max
+    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/current_max
+    chmod 0664 /sys/class/power_supply/ext-charger-dual/current_max
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/input_current_max
+    chmod 0664 /sys/class/power_supply/ext-charger/input_current_max
+    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/input_current_max
+    chmod 0664 /sys/class/power_supply/ext-charger-dual/input_current_max
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/current_max
+    chmod 0664 /sys/class/power_supply/ext-charger/current_max
+    chown mot_tcmd root /sys/class/power_supply/battery/device/force_chg_fail_clear
+    chmod 0664 /sys/class/power_supply/battery/device/force_chg_fail_clear
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/usb_otg
+    chmod 0664 /sys/class/power_supply/ext-charger/usb_otg
 
 on post-fs-data
     # Fingerprint
