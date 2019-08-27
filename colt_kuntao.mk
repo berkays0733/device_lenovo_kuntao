@@ -34,7 +34,7 @@ $(call inherit-product, device/lenovo/kuntao/device.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := colt_kuntao
-PRODUCT_DEVICE := kuntao
+PRODUCT_DEVICE := P2a42
 PRODUCT_BRAND := Lenovo
 PRODUCT_MODEL := Lenovo P2a42
 PRODUCT_MANUFACTURER := LENOVO
