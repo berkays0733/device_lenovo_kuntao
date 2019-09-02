@@ -56,6 +56,13 @@
     <!-- Value for overriding outdoor capable mode for LiveDisplay tile -->
     <bool name="config_outdoorCapable">true</bool>
 
+    <!-- The second metric to be used for antenna bar display for LTE
+         The metrics to be used for Antenna display is based on RSRP and either one of the
+           0. RSSNR
+           1. RSRQ
+    -->
+    <integer name="config_LTE_antenna_bar_quantity_metric">1</integer>
+
     <!-- Smart charge sysfs node and value for suspend/resume charging-->
     <string name="config_SmartChargingSysfsNode" translatable="false">/sys/class/power_supply/battery/charging_enabled</string>
     <string name="config_SmartChargingSupspendValue" translatable="false">0</string>
