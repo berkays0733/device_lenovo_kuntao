@@ -139,8 +139,8 @@ on boot
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
     # Allow access to emmc rawdump block partition and dload sysfs node
-    chown root system /dev/block/bootdevice/by-name/rawdump -p /dev/block/
-    chmod 0660 /dev/block/bootdevice/by-name/rawdump -p /dev/block/
+    chown root system /dev/block/bootdevice/by-name/rawdump
+    chmod 0660 /dev/block/bootdevice/by-name/rawdump
     chown root system /sys/kernel/dload/emmc_dload
     chmod 0660 /sys/kernel/dload/emmc_dload
 
@@ -366,6 +366,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
 #   group wifi inet keystore
     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
     interface android.hardware.wifi.supplicant@1.1::ISupplicant default
+    interface android.hardware.wifi.supplicant@1.2::ISupplicant default
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled

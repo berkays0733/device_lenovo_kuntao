@@ -43,7 +43,6 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
     audio_amplifier.msm8953 \
-    audio.a2dp.default \
     audio.primary.msm8953 \
     audio.r_submix.default \
     audio.usb.default \
@@ -51,6 +50,12 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing
+
+# A2DP
+PRODUCT_PACKAGES += \
+		audio.a2dp.default \
+		android.hardware.bluetooth.a2dp@1.0-impl \
+		android.hardware.bluetooth.a2dp@1.0-service
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
@@ -293,7 +298,8 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.1-service-qti
+    android.hardware.power@1.2-service-qti \
+		android.hardware.power.stats@1.0-service.mock
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
@@ -308,7 +314,7 @@ PRODUCT_PACKAGES += \
     librmnetctl
 
 PRODUCT_PACKAGES += \
-    android.hardware.radio@1.2 \
+    android.hardware.radio@1.0 \
     android.hardware.radio.config@1.0 \
     android.hardware.secure_element@1.0 \
     libcnefeatureconfig \
@@ -346,10 +352,19 @@ PRODUCT_COPY_FILES += \
 
 # Telephony
 PRODUCT_PACKAGES += \
-    telephony-ext
+		telephony-ext \
+		ims-ext-common_system \
+    rild \
+    libprotobuf-cpp-full \
+    qti-telephony-hidl-wrapper \
+    qti_telephony_hidl_wrapper.xml \
+    qti-telephony-utils \
+    qti_telephony_utils.xml \
+    ims_ext_common.xml
 
 PRODUCT_BOOT_JARS += \
-    telephony-ext
+    telephony-ext \
+		ims-ext-common_system
 
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \

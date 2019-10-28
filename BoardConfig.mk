@@ -200,9 +200,10 @@ BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 VENDOR_SECURITY_PATCH := 2017-11-01
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
+include device/qcom/sepolicy-legacy-um/sepolicy.mk
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(VENDOR_PATH)/sepolicy/private
 BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy/vendor
+SELINUX_IGNORE_NEVERALLOWS := true
 
 # Treble
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
@@ -215,6 +216,7 @@ endif
 
 # WiFi
 BOARD_HAS_QCOM_WLAN := true
+BOARD_USES_AOSP_WLAN_HAL := true
 BOARD_HOSTAPD_DRIVER := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
 BOARD_WLAN_DEVICE := qcwcn
