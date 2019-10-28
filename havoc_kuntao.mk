@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Include Havoc common configuration
+include vendor/havoc/config/common_full_phone.mk
+
 # Boot animation
 TARGET_BOOT_ANIMATION_RES := 1080x1920
 
@@ -24,8 +27,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
-# Inherit some common ColtOS stuff.
-$(call inherit-product, vendor/colt/common.mk)
 
 $(call inherit-product, packages/apps/ColtApps/common.mk)
 
@@ -33,7 +34,7 @@ $(call inherit-product, packages/apps/ColtApps/common.mk)
 $(call inherit-product, device/lenovo/kuntao/device.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := colt_kuntao
+PRODUCT_NAME := havoc_kuntao
 PRODUCT_DEVICE := kuntao
 PRODUCT_BRAND := Lenovo
 PRODUCT_MODEL := Lenovo P2a42
@@ -43,7 +44,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-lenovo
 
 # Maintainer
 PRODUCT_PROPERTY_OVERRIDES += \
- ro.colt.maintainer=Sohit
+ ro.havoc.maintainer=SVB
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="kuntao_row-user 7.0 NRD90N P2a42_S251_171107_ROW release-keys" \

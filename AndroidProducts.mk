@@ -16,3 +16,8 @@
 
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/colt_kuntao.mk
+
+		COMMON_LUNCH_CHOICES := \
+				havoc_kuntao-eng \
+				havoc_kuntao-user \
+				havoc_kuntao-userdebug
