@@ -14,6 +14,14 @@
 # limitations under the License.
 #
 
+# Device Path
+DEVICE_PATH := device/lenovo/kuntao
+
+# Soong
+PRODUCT_SOONG_NAMESPACES += \
+    $(DEVICE_PATH)
+
+
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
