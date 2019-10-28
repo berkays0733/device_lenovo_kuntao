@@ -39,40 +39,56 @@ public class KeyHandler implements DeviceKeyHandler {
     }
 
    @Override
-    public KeyEvent handleKeyEvent(KeyEvent event) {
+   public class KeyHandler implements DeviceKeyHandler {
 
-        int keyCode;
-        int scanCode;
-        int action;
+     private final Context mContext;
+     private boolean mFingerprintGesturesEnabled = false;
+     private static long time = 0;
+     private static long time1 = 0;
 
-        if (!hasSetupCompleted()) {
-            return event;
-        }
+     public KeyHandler(Context context) {
+         mContext = context;
 
-        keyCode = event.getKeyCode();
-        scanCode = event.getScanCode();
+         IntentFilter fingerprintGesturesFilter =
+                 new IntentFilter(Constants.FINGERPRINT_GESTURES_INTENT);
+         mContext.registerReceiver(mFingerprintGesturesReceiver, fingerprintGesturesFilter);
+     }
 
-        if(keyCode == KeyEvent.KEYCODE_HOME) {
-                action = event.getAction();
-                if(action == KeyEvent.ACTION_DOWN) isHomePressed = true;
-                else if(action == KeyEvent.ACTION_UP) {
-                        isHomePressed = false;
-                        time = System.currentTimeMillis();
-                }
-            return event;
-        }
+     @Override
+     public KeyEvent handleKeyEvent(KeyEvent event) {
 
-        if ((keyCode == KeyEvent.KEYCODE_BACK && scanCode == 562) ||
-                (keyCode == KeyEvent.KEYCODE_APP_SWITCH && scanCode == 563)) {
+         int keyCode;
+         int scanCode;
+         int action;
 
-           if(isHomePressed) return null;
-           if((System.currentTimeMillis() - time) < 400) return null;
-           /* Consume the fingerprint gestures key events if not enabled */
-            return !mFingerprintGesturesEnabled ? null : event;
-        }
+         if (!hasSetupCompleted()) {
+             return event;
+         }
 
-        return event;
-    }
+         keyCode = event.getKeyCode();
+         scanCode = event.getScanCode();
+
+         if(keyCode == KeyEvent.KEYCODE_HOME) {
+                 action = event.getAction();
+                 if(action == KeyEvent.ACTION_DOWN)
+                         time1 = System.currentTimeMillis();
+                 else if(action == KeyEvent.ACTION_UP)
+                         time = System.currentTimeMillis();
+             return event;
+         }
+
+         if ((keyCode == KeyEvent.KEYCODE_BACK && scanCode == 562) ||
+                 (keyCode == KeyEvent.KEYCODE_APP_SWITCH && scanCode == 563)) {
+
+            if((System.currentTimeMillis() - time1) < 700) return null;
+            if((System.currentTimeMillis() - time) < 500) return null;
+
+            /* Consume the fingerprint gestures key events if not enabled */
+             return !mFingerprintGesturesEnabled ? null : event;
+         }
+
+         return event;
+     }
 
     private boolean hasSetupCompleted() {
         return Settings.Secure.getInt(mContext.getContentResolver(),
