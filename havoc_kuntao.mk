@@ -28,8 +28,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
 
-$(call inherit-product, packages/apps/ColtApps/common.mk)
-
 # Inherit device configuration
 $(call inherit-product, device/lenovo/kuntao/device.mk)
 
