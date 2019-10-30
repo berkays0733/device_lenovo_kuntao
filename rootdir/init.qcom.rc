@@ -329,12 +329,11 @@ service vendor.tftp_server /vendor/bin/tftp_server
    user root
 
 # FM
-service fm_dl /vendor/bin/init.qti.fm.sh
-    class late_start
-    user system
-    group system
-    disabled
-    oneshot
+on property:vendor.hw.fm.init=0
+    write /sys/module/radio_iris_transport/parameters/fmsmd_set 0
+
+on property:vendor.hw.fm.init=1
+    write /sys/module/radio_iris_transport/parameters/fmsmd_set 1
 
 service vendor.netmgrd /vendor/bin/netmgrd
     class main
