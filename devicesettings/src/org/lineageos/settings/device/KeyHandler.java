@@ -29,6 +29,8 @@ public class KeyHandler implements DeviceKeyHandler {
 
     private final Context mContext;
     private boolean mFingerprintGesturesEnabled = false;
+    private static long time = 0;
+    private static long time1 = 0;
 
     public KeyHandler(Context context) {
         mContext = context;
@@ -38,57 +40,41 @@ public class KeyHandler implements DeviceKeyHandler {
         mContext.registerReceiver(mFingerprintGesturesReceiver, fingerprintGesturesFilter);
     }
 
-   @Override
-   public class KeyHandler implements DeviceKeyHandler {
+    @Override
+    public KeyEvent handleKeyEvent(KeyEvent event) {
 
-     private final Context mContext;
-     private boolean mFingerprintGesturesEnabled = false;
-     private static long time = 0;
-     private static long time1 = 0;
+        int keyCode;
+        int scanCode;
+        int action;
 
-     public KeyHandler(Context context) {
-         mContext = context;
+        if (!hasSetupCompleted()) {
+            return event;
+        }
 
-         IntentFilter fingerprintGesturesFilter =
-                 new IntentFilter(Constants.FINGERPRINT_GESTURES_INTENT);
-         mContext.registerReceiver(mFingerprintGesturesReceiver, fingerprintGesturesFilter);
-     }
+        keyCode = event.getKeyCode();
+        scanCode = event.getScanCode();
 
-     @Override
-     public KeyEvent handleKeyEvent(KeyEvent event) {
+        if(keyCode == KeyEvent.KEYCODE_HOME) {
+                action = event.getAction();
+                if(action == KeyEvent.ACTION_DOWN)
+                        time1 = System.currentTimeMillis();
+                else if(action == KeyEvent.ACTION_UP)
+                        time = System.currentTimeMillis();
+            return event;
+        }
 
-         int keyCode;
-         int scanCode;
-         int action;
+        if ((keyCode == KeyEvent.KEYCODE_BACK && scanCode == 562) ||
+                (keyCode == KeyEvent.KEYCODE_APP_SWITCH && scanCode == 563)) {
 
-         if (!hasSetupCompleted()) {
-             return event;
-         }
+           if((System.currentTimeMillis() - time1) < 700) return null;
+           if((System.currentTimeMillis() - time) < 500) return null;
 
-         keyCode = event.getKeyCode();
-         scanCode = event.getScanCode();
+           /* Consume the fingerprint gestures key events if not enabled */
+            return !mFingerprintGesturesEnabled ? null : event;
+        }
 
-         if(keyCode == KeyEvent.KEYCODE_HOME) {
-                 action = event.getAction();
-                 if(action == KeyEvent.ACTION_DOWN)
-                         time1 = System.currentTimeMillis();
-                 else if(action == KeyEvent.ACTION_UP)
-                         time = System.currentTimeMillis();
-             return event;
-         }
-
-         if ((keyCode == KeyEvent.KEYCODE_BACK && scanCode == 562) ||
-                 (keyCode == KeyEvent.KEYCODE_APP_SWITCH && scanCode == 563)) {
-
-            if((System.currentTimeMillis() - time1) < 700) return null;
-            if((System.currentTimeMillis() - time) < 500) return null;
-
-            /* Consume the fingerprint gestures key events if not enabled */
-             return !mFingerprintGesturesEnabled ? null : event;
-         }
-
-         return event;
-     }
+        return event;
+    }
 
     private boolean hasSetupCompleted() {
         return Settings.Secure.getInt(mContext.getContentResolver(),

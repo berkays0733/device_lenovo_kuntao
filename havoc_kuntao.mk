@@ -18,7 +18,8 @@
 include vendor/havoc/config/common_full_phone.mk
 
 # Boot animation
-TARGET_BOOT_ANIMATION_RES := 1080x1920
+TARGET_SCREEN_HEIGHT := 1080
+TARGET_SCREEN_WIDTH := 1920
 
 # Inherit 64-bit configs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)

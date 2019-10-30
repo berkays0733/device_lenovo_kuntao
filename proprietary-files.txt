@@ -340,6 +340,10 @@ lib64/libvfmAuth.so:vendor/lib64/libvfmAuth.so
 lib64/libvfmClient.so:vendor/lib64/libvfmClient.so
 lib64/libvfmtztransport.so:vendor/lib64/libvfmtztransport.so
 
+# FM Radio - from Tissot PKQ1.180917.001.V10.0.11.0.PDHMIXM
+vendor/bin/fm_qsoc_patches|77f31379d6bf68f2f0b3aa8936150b778c4e89ee
+vendor/lib64/vendor.qti.hardware.fm@1.0.so|e72205810d49a96b01edefc5e18e5c181a4555d2
+
 # Gatekeeper - from tissot - PKQ1.180917.001.V10.0.12.0.PDHMIXM
 vendor/lib64/hw/gatekeeper.msm8953.so|c1b386547234815a0d6116b5e4756de66075cd3f
 

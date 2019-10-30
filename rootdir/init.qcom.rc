@@ -68,6 +68,7 @@ on early-boot
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
+    chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
@@ -77,6 +78,7 @@ on boot
     chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
     chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
     chmod 0660 /sys/module/bluetooth_power/parameters/power
+    chmod 0660 /sys/module/radio_iris_transport/parameters/fmsmd_set
     chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
     chmod 0660 /sys/module/radio_iris_transport/parameters/fmsmd_set
     chmod 0660 /sys/class/rfkill/rfkill0/state
@@ -245,7 +247,8 @@ on post-fs-data
     mkdir /dev/socket/location/xtra 0770 gps gps
 
     # Create /data/time folder for time-services
-    mkdir /data/vendor/time/ 0700 system system
+    mkdir /data/vendor/fm 0770 system system
+    chmod 0770 /data/vendor/fm
 
     setprop vold.post_fs_data_done 1
 
@@ -326,11 +329,12 @@ service vendor.tftp_server /vendor/bin/tftp_server
    user root
 
 # FM
-on property:vendor.hw.fm.init=0
-    write /sys/module/radio_iris_transport/parameters/fmsmd_set 0
-
-on property:vendor.hw.fm.init=1
-    write /sys/module/radio_iris_transport/parameters/fmsmd_set 1
+service fm_dl /vendor/bin/init.qti.fm.sh
+    class late_start
+    user system
+    group system
+    disabled
+    oneshot
 
 service vendor.netmgrd /vendor/bin/netmgrd
     class main

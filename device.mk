@@ -138,10 +138,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.0-service.kuntao
 
+		# Fingerprint sensor
+PRODUCT_PACKAGES += \
+    DeviceSettings
+
 # FM
 PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
+		FMRadio \
+		libfmjni
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -336,6 +340,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.usb.rc \
+		init.qti.fm.sh \
     init.recovery.qcom.rc \
     init.target.rc \
     fstab.qcom \
