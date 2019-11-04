@@ -97,6 +97,11 @@ PRODUCT_PACKAGES += \
     camera.msm8953 \
     Snap
 
+# HW crypto
+PRODUCT_PACKAGES += \
+    vendor.qti.hardware.cryptfshw@1.0-service-qti
+
+
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service
@@ -138,14 +143,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.0-service.kuntao
 
-		# Fingerprint sensor
+# Fingerprint sensor
 PRODUCT_PACKAGES += \
     DeviceSettings
 
 # FM
 PRODUCT_PACKAGES += \
-		FMRadio \
-		libfmjni
+    FM2 \
+    libqcomfm_jni \
+    qcom.fmradio
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -179,8 +185,8 @@ PRODUCT_COPY_FILES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
-    android.hidl.manager@1.0 \
-    android.hidl.manager@1.0-java
+    android.hidl.manager@1.0
+# android.hidl.manager@1.0-java
 
 # Healthd
 PRODUCT_PACKAGES += \
