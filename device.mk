@@ -61,9 +61,9 @@ PRODUCT_PACKAGES += \
 
 # A2DP
 PRODUCT_PACKAGES += \
-		audio.a2dp.default \
-		android.hardware.bluetooth.a2dp@1.0-impl \
-		android.hardware.bluetooth.a2dp@1.0-service
+    audio.a2dp.default \
+    android.hardware.bluetooth.a2dp@1.0-impl \
+    android.hardware.bluetooth.a2dp@1.0-service
 
 PRODUCT_PACKAGES += \
     android.hardware.audio@2.0-impl \
@@ -99,7 +99,8 @@ PRODUCT_PACKAGES += \
 
 # HW crypto
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.cryptfshw@1.0-service-qti
+    vendor.qti.hardware.cryptfshw@1.0-service-ioctl-qti \
+    vendor.qti.hardware.cryptfshw@1.0-service-dlsym-qti
 
 
 PRODUCT_PACKAGES += \
