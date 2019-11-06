@@ -67,6 +67,9 @@ service vendor.qseecomd /vendor/bin/qseecomd
    user root
    group root
 
+on post-fs
+    start vendor.qseecomd
+
 service thermal-engine /vendor/bin/thermal-engine
    class main
    user root
