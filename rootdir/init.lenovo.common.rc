@@ -34,6 +34,8 @@ on boot
     chown system system /dev/vfsspi
     chmod 0660 /dev/vfsspi
     mkdir /dev/validity 0775 system system
+    chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
+    chmod 0660 /sys/bus/platform/devices/soc:fingerprint@0/shutdown
 
 on post-fs
     # Proximity and Light sensor
