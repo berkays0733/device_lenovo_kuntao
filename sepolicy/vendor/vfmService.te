@@ -26,7 +26,7 @@ set_prop(vfmService, system_prop)
 
 allow vfmService vfsspi_service:service_manager { add find };
 
-allow vfmService hal_fingerprint_mido:binder { transfer call };
+allow vfmService hal_fingerprint_default:binder { transfer call };
 allow vfmService fuse:dir search;
 allow vfmService fuse:file { getattr open append };
 allow vfmService storage_file:dir search;
