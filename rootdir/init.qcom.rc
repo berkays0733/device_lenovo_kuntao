@@ -284,6 +284,9 @@ on post-fs-data
     mkdir /data/vendor/swap 0770 root system
     chmod 2770 /data/vendor/swap
 
+    #Start move time data to /data/vendor once post-fs-data done
+    start vendor.move_time_data
+
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
     #Reset read ahead for dm-0 and dm-1 to 512kb
@@ -421,8 +424,22 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqb
 on property:init.svc.surfaceflinger=restarting
     restart vendor.hwcomposer-2-1
 
+service time_daemon /vendor/bin/time_daemon
+    class main
+    user system
+    group system
+    capabilities SYS_TIME
+    writepid /dev/cpuset/system-background/tasks
+
 service vendor.power_off_alarm /vendor/bin/power_off_alarm
     class core
+    group system
+    disabled
+    oneshot
+
+service vendor.move_time_data /system/bin/move_time_data.sh
+    class main
+    user system
     group system
     disabled
     oneshot
