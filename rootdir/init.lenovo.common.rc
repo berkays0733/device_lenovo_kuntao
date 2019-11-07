@@ -2,14 +2,6 @@ service smart_charger /vendor/bin/smart_charger
     class main
     user root
 
-service vfmservice /vendor/bin/vfmService
-    class main
-    user system
-    group system
-    disabled
-
-on property:vendor.sys.listeners.registered=true
-    start vfmservice
 
 on property:vold.decrypt=trigger_restart_framework
     start vfmservice
@@ -31,11 +23,14 @@ on boot
     chmod 0664 /sys/board_properties/tpd_suspend_status
 
     # Fingerprint
-    chown system system /dev/vfsspi
     chmod 0660 /dev/vfsspi
+    chown system system /dev/vfsspi
     mkdir /dev/validity 0775 system system
-    chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
     chmod 0660 /sys/bus/platform/devices/soc:fingerprint@0/shutdown
+    chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
+
+    on property:vendor.sys.listeners.registered=true
+    start vfmService
 
 on post-fs
     # Proximity and Light sensor
@@ -73,6 +68,24 @@ on post-fs
     chmod 0664 /sys/class/power_supply/battery/device/force_chg_fail_clear
     chown mot_tcmd root /sys/class/power_supply/ext-charger/usb_otg
     chmod 0664 /sys/class/power_supply/ext-charger/usb_otg
+
+    service vfmService /vendor/bin/vfmService
+        class main
+        user system
+        group system
+
+    service wcnss-service /vendor/bin/wcnss_service
+        class late_start
+        user system
+        group system wifi radio
+        oneshot
+
+    service fm_dl /vendor/bin/init.qti.fm.sh
+        class late_start
+        user system
+        group system
+        disabled
+        oneshot
 
 on post-fs-data
     # Fingerprint
