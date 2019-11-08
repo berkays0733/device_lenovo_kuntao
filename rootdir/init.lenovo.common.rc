@@ -2,6 +2,23 @@ service smart_charger /vendor/bin/smart_charger
     class main
     user root
 
+service vfmService /vendor/bin/vfmService
+    class main
+    user system
+    group system
+
+service wcnss-service /vendor/bin/wcnss_service
+    class late_start
+    user system
+    group system wifi radio
+    oneshot
+
+service fm_dl /vendor/bin/init.qti.fm.sh
+    class late_start
+    user system
+    group system
+    disabled
+    oneshot
 
 on property:vold.decrypt=trigger_restart_framework
     start vfmservice
@@ -29,7 +46,7 @@ on boot
     chmod 0660 /sys/bus/platform/devices/soc:fingerprint@0/shutdown
     chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
 
-    on property:vendor.sys.listeners.registered=true
+on property:vendor.sys.listeners.registered=true
     start vfmService
 
 on post-fs
@@ -69,23 +86,7 @@ on post-fs
     chown mot_tcmd root /sys/class/power_supply/ext-charger/usb_otg
     chmod 0664 /sys/class/power_supply/ext-charger/usb_otg
 
-    service vfmService /vendor/bin/vfmService
-        class main
-        user system
-        group system
 
-    service wcnss-service /vendor/bin/wcnss_service
-        class late_start
-        user system
-        group system wifi radio
-        oneshot
-
-    service fm_dl /vendor/bin/init.qti.fm.sh
-        class late_start
-        user system
-        group system
-        disabled
-        oneshot
 
 on post-fs-data
     # Fingerprint
