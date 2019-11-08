@@ -2,52 +2,48 @@ service smart_charger /vendor/bin/smart_charger
     class main
     user root
 
-service vfmService /vendor/bin/vfmService
+service vfmservice /vendor/bin/vfmService
+    user system
+    group system
     class main
-    user system
-    group system
 
-service wcnss-service /vendor/bin/wcnss_service
-    class late_start
-    user system
-    group system wifi radio
-    oneshot
-
-service fm_dl /vendor/bin/init.qti.fm.sh
-    class late_start
-    user system
-    group system
-    disabled
-    oneshot
+on property:vendor.sys.listeners.registered=true
+    setprop persist.vendor.fp.gesture 1
+    start vfmservice
 
 on property:vold.decrypt=trigger_restart_framework
+    setprop persist.vendor.fp.gesture 1
     start vfmservice
 
 on boot
-    # Dynamic-CABC feature
+    # CABC feature
     chown system system /sys/class/graphics/fb0/cabc_mode
+    # HBM feature
+    chown system system /sys/class/graphics/fb0/hbm
     # ACL feature
     chown system system /sys/class/graphics/fb0/acl_mode
     # Seed feature
     chown system system /sys/class/graphics/fb0/color_profile
 
-    #lenovo-sw weiweij added for file point access
-    chown system system /sys/class/power_supply/ext-charger/otg_usb_short
-    chmod 0666 /sys/class/power_supply/ext-charger/otg_usb_short
-
     # Double tap
     chown system system /sys/board_properties/tpd_suspend_status
     chmod 0664 /sys/board_properties/tpd_suspend_status
 
-    # Fingerprint
-    chmod 0660 /dev/vfsspi
-    chown system system /dev/vfsspi
-    mkdir /dev/validity 0775 system system
-    chmod 0660 /sys/bus/platform/devices/soc:fingerprint@0/shutdown
-    chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
+    #USB controller configuration
+    write /sys/module/g_android/parameters/mtp_tx_req_len 131072
+    write /sys/module/g_android/parameters/mtp_rx_req_len 131072
+    write /sys/class/android_usb/android0/f_rndis_qc/rndis_transports BAM2BAM_IPA
+    setprop sys.usb.rndis.func.name "rndis_bam"
+    setprop sys.usb.rmnet.func.name "rmnet_bam"
+    setprop sys.usb.rmnet.inst.name "rmnet"
+    setprop sys.usb.dpl.inst.name "dpl"
 
-on property:vendor.sys.listeners.registered=true
-    start vfmService
+    # Fingerprint
+    chown system system /dev/vfsspi
+    chmod 0660 /dev/vfsspi
+    mkdir /dev/validity 0775 system system
+    chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
+    chmod 0660 /sys/bus/platform/devices/soc:fingerprint@0/shutdown
 
 on post-fs
     # Proximity and Light sensor
@@ -61,32 +57,6 @@ on post-fs
     # G-sensor autocalibration
     chown system system /persist/GSSET.txt
     chmod 0660 /persist/GSSET.txt
-
-    #lenovo-sw weiweij added for file point access
-    chown mot_tcmd root /sys/class/power_supply/ext-charger/charge_enabled
-    chmod 0664 /sys/class/power_supply/ext-charger/charge_enabled
-    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/charge_enabled
-    chmod 0664 /sys/class/power_supply/ext-charger-dual/charge_enabled
-    chown mot_tcmd root /sys/class/power_supply/ext-charger/battery_charging_enabled
-    chmod 0664 /sys/class/power_supply/ext-charger/battery_charging_enabled
-    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/battery_charging_enabled
-    chmod 0664 /sys/class/power_supply/ext-charger-dual/battery_charging_enabled
-    chown mot_tcmd root /sys/class/power_supply/ext-charger/current_max
-    chmod 0664 /sys/class/power_supply/ext-charger/current_max
-    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/current_max
-    chmod 0664 /sys/class/power_supply/ext-charger-dual/current_max
-    chown mot_tcmd root /sys/class/power_supply/ext-charger/input_current_max
-    chmod 0664 /sys/class/power_supply/ext-charger/input_current_max
-    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/input_current_max
-    chmod 0664 /sys/class/power_supply/ext-charger-dual/input_current_max
-    chown mot_tcmd root /sys/class/power_supply/ext-charger/current_max
-    chmod 0664 /sys/class/power_supply/ext-charger/current_max
-    chown mot_tcmd root /sys/class/power_supply/battery/device/force_chg_fail_clear
-    chmod 0664 /sys/class/power_supply/battery/device/force_chg_fail_clear
-    chown mot_tcmd root /sys/class/power_supply/ext-charger/usb_otg
-    chmod 0664 /sys/class/power_supply/ext-charger/usb_otg
-
-
 
 on post-fs-data
     # Fingerprint
