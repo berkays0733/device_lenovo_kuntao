@@ -37,7 +37,7 @@ endif # TARGET_2ND_ARCH is not empty
 endef
 
 $(foreach lib,$(VNDK_SP_LIBRARIES),\
-    $(eval $(call define-vndk-sp-lib,$(lib),vndk-sp-gen,vndk-sp-29)))
+    $(eval $(call define-vndk-sp-lib,$(lib))))
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := vndk-sp
