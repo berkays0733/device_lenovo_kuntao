@@ -94,6 +94,10 @@ on property:vold.decrypt=trigger_restart_framework
     restart vendor.audio-hal-2-0
     restart time_daemon
 
+on post-fs-data
+    #Create directories for Fingerprint
+    mkdir /data/validity 0775 system system
+
 on property:sys.boot_completed=1
     trigger enable-low-power
 
