@@ -460,11 +460,6 @@ service thermal-engine /vendor/bin/thermal-engine
    socket thermal-send-rule stream 0660 system system
    group root
 
-service vfmService /vendor/bin/vfmService
-    class main
-    user system
-    group system
-
 service wcnss-service /vendor/bin/wcnss_service
     class late_start
     user system

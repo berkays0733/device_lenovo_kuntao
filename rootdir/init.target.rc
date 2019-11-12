@@ -25,6 +25,12 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+service vfmService /vendor/bin/vfmService
+    class core
+    user system
+    group system
+
+
 on early-init
     # Set 512 for > 4GB
     write /sys/block/mmcblk0/bdi/read_ahead_kb 512
@@ -84,6 +90,7 @@ on boot
     mkdir /dev/validity 0775 system system
     chmod 0660 /sys/bus/platform/devices/soc:fingerprint@0/shutdown
     chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
+
 
 on property:vendor.sys.listeners.registered=true
     start vfmService
