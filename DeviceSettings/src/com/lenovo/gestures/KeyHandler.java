@@ -22,7 +22,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.provider.Settings;
 import android.view.KeyEvent;
-//import android.util.Log;
+import android.util.Log;
 
 
 import com.android.internal.os.DeviceKeyHandler;
@@ -33,6 +33,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private boolean mFingerprintGesturesEnabled = false;
     private static long time = 0;
     private static long time1 = 0;
+    private static final String TAG = "keyLogs";
 
     public KeyHandler(Context context) {
         mContext = context;
@@ -49,12 +50,13 @@ public class KeyHandler implements DeviceKeyHandler {
         int scanCode;
         int action;
 
+        keyCode = event.getKeyCode();
+        scanCode = event.getScanCode();
+        Log.d(TAG, keyCode+" "+scanCode);
+
         if (!hasSetupCompleted()) {
             return event;
         }
-
-        keyCode = event.getKeyCode();
-        scanCode = event.getScanCode();
 
         if(keyCode == KeyEvent.KEYCODE_HOME) {
                 action = event.getAction();
