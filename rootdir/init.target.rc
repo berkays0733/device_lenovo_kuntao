@@ -25,11 +25,6 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-service vfmService /vendor/bin/vfmService
-    class core
-    user system
-    group system
-
 
 on early-init
     # Set 512 for > 4GB
@@ -84,26 +79,10 @@ on boot
     chmod 0664 /sys/board_properties/tpd_glove_status
     chown system system /sys/board_properties/tpd_glove_status
 
-    # Fingerprint
-    chmod 0660 /dev/vfsspi
-    chown system system /dev/vfsspi
-    mkdir /dev/validity 0775 system system
-    chmod 0660 /sys/bus/platform/devices/soc:fingerprint@0/shutdown
-    chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
-
-
-on property:vendor.sys.listeners.registered=true
-    start vfmService
-
 on property:vold.decrypt=trigger_restart_framework
-    start vfmService
     restart vendor.camera-provider-2-4
     restart vendor.audio-hal-2-0
     restart time_daemon
-
-on post-fs-data
-    #Create directories for Fingerprint
-    mkdir /data/validity 0775 system system
 
 on property:sys.boot_completed=1
     trigger enable-low-power
