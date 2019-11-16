@@ -1,3 +1,4 @@
+
 cc_library_static {
     name: "libinit_kuntao",
     recovery_available: true,

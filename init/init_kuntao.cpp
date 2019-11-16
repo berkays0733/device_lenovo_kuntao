@@ -25,7 +25,7 @@ void vendor_load_properties()
 {
     std::string platform = android::base::GetProperty("ro.board.platform", "");
 
-    if (platform != ANDROID_TARGET)
+    if (platform != "msm8953")
         return;
     property_override("ro.build.description", "kuntao_row-user 7.0 NRD90N P2a42_S251_171107_ROW release-keys");
     property_override("ro.build.fingerprint", "Lenovo/kuntao_row/P2a42:7.0/NRD90N/P2a42_S251_171107_ROW:user/release-keys");
