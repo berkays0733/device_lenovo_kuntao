@@ -54,9 +54,9 @@ public class KeyHandler implements DeviceKeyHandler {
         keyCode = event.getKeyCode();
         scanCode = event.getScanCode();
         str = "KeyCode ScanCode";
-        Log.d(TAG, str);
+        Log.wtf(TAG, str);
         str = "" + keyCode + " " + scanCode;
-        Log.d(TAG, str);
+        Log.wtf(TAG, str);
         if (!hasSetupCompleted()) {
             return event;
         }
