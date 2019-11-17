@@ -124,6 +124,9 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 # CNE and DPM
 BOARD_USES_QCNE := true
 
+# Gestures
+TARGET_GESTURES_NODE := "/proc/touchpanel/gesture_enable"
+
 # GPU
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
