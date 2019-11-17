@@ -15,6 +15,7 @@
 #
 
 DEVICE_PATH := device/lenovo/kuntao
+TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8953
@@ -143,7 +144,7 @@ DEVICE_MANIFEST_FILE := $(DEVICE_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_kuntao
+TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_kuntao
 TARGET_RECOVERY_DEVICE_MODULES := libinit_kuntao
 
 # Kernel
