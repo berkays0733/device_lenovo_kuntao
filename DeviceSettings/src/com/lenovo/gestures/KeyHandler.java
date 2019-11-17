@@ -34,6 +34,7 @@ public class KeyHandler implements DeviceKeyHandler {
     private static long time = 0;
     private static long time1 = 0;
     private static final String TAG = "keyLogs";
+    private static String str = "KeyCode ScanCode";
 
     public KeyHandler(Context context) {
         mContext = context;
@@ -52,8 +53,10 @@ public class KeyHandler implements DeviceKeyHandler {
 
         keyCode = event.getKeyCode();
         scanCode = event.getScanCode();
-        Log.d(TAG, keyCode+" "+scanCode);
-
+        str = "KeyCode ScanCode";
+        Log.d(TAG, str);
+        str = "" + keyCode + " " + scanCode;
+        Log.d(TAG, str);
         if (!hasSetupCompleted()) {
             return event;
         }
