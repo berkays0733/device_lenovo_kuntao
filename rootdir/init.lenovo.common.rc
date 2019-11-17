@@ -37,3 +37,26 @@ on post-fs
     # G-sensor autocalibration
     chown system system /persist/GSSET.txt
     chmod 0660 /persist/GSSET.txt
+
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/charge_enabled
+    chmod 0664 /sys/class/power_supply/ext-charger/charge_enabled
+    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/charge_enabled
+    chmod 0664 /sys/class/power_supply/ext-charger-dual/charge_enabled
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/battery_charging_enabled
+    chmod 0664 /sys/class/power_supply/ext-charger/battery_charging_enabled
+    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/battery_charging_enabled
+    chmod 0664 /sys/class/power_supply/ext-charger-dual/battery_charging_enabled
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/current_max
+    chmod 0664 /sys/class/power_supply/ext-charger/current_max
+    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/current_max
+    chmod 0664 /sys/class/power_supply/ext-charger-dual/current_max
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/input_current_max
+    chmod 0664 /sys/class/power_supply/ext-charger/input_current_max
+    chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/input_current_max
+    chmod 0664 /sys/class/power_supply/ext-charger-dual/input_current_max
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/current_max
+    chmod 0664 /sys/class/power_supply/ext-charger/current_max
+    chown mot_tcmd root /sys/class/power_supply/battery/device/force_chg_fail_clear
+    chmod 0664 /sys/class/power_supply/battery/device/force_chg_fail_clear
+    chown mot_tcmd root /sys/class/power_supply/ext-charger/usb_otg
+    chmod 0664 /sys/class/power_supply/ext-charger/usb_otg
