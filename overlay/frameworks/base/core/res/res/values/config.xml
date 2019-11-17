@@ -683,4 +683,7 @@
          pulsating and RGB control would set this config to 75. -->
      <integer name="config_deviceLightCapabilities">75</integer>
 
+     <!-- Enable system navigation keys. -->
+     <bool name="config_supportSystemNavigationKeys">true</bool>
+
 </resources>
