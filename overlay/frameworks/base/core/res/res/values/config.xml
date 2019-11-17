@@ -455,15 +455,15 @@
 
     <!-- Does the battery LED support multiple colors?
      Used to decide if the user can change the colors -->
-<bool name="config_multiColorBatteryLed">true</bool>
+    <bool name="config_multiColorBatteryLed">true</bool>
 
-<!-- Does the notification LED support multiple colors?
-     Used to decide if the user can change the colors -->
-<bool name="config_multiColorNotificationLed">true</bool>
+    <!-- Does the notification LED support multiple colors?
+         Used to decide if the user can change the colors -->
+    <bool name="config_multiColorNotificationLed">true</bool>
 
-<!-- Do the battery/notification LEDs support pulsing?
-     Used to decide if we show pulse settings -->
-<bool name="config_ledCanPulse">true</bool>
+    <!-- Do the battery/notification LEDs support pulsing?
+         Used to decide if we show pulse settings -->
+    <bool name="config_ledCanPulse">true</bool>
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
     <bool name="config_unplugTurnsOnScreen">true</bool>
@@ -721,4 +721,8 @@
     <!-- For high brightness mode -->
     <integer name="config_outdoorAmbientLux">20000</integer>
 
+    <!-- Whether the notification LED should repeatedly flash when a notification is
+    pending. The value is boolean (1 or 0).-->
+    <bool name="notification_light_pulse">true</bool>
+    
 </resources>
