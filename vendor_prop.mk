@@ -120,10 +120,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.bservice_enable=true
 
-# Touch optimize
+# Dark
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.qti.inputopts.enable=true \
-    persist.vendor.qti.inputopts.movetouchslop=0.6
+		debug.hwui.force_dark=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
