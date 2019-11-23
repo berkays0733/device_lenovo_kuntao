@@ -20,7 +20,7 @@ import android.app.ActionBar;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v14.preference.PreferenceFragment;
+import androidx.preference.PreferenceFragment;
 import android.view.MenuItem;
 
 public class ButtonSettingsFragment extends PreferenceFragment
