@@ -399,6 +399,12 @@ PRODUCT_BOOT_JARS += \
     telephony-ext \
 		ims-ext-common_system
 
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    android.hardware.thermal@1.0-service \
+    thermal.msm8953
+
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
