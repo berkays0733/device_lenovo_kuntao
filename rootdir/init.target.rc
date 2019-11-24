@@ -29,10 +29,7 @@
 
 import /vendor/etc/init/hw/init.lenovo.common.rc
 
-service vfmService /vendor/bin/vfmService
-    class core
-    user system
-    group system
+import /vendor/etc/init/hw/init.lenovo.common.rc
 
 
 on early-init

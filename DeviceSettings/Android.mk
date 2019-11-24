@@ -11,8 +11,8 @@ LOCAL_PRIVATE_PLATFORM_APIS := true
 LOCAL_USE_AAPT2 := true
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
-androidx.core_core \
-androidx.preference_preference
+		androidx.core_core \
+		androidx.preference_preference
 
 LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/res \

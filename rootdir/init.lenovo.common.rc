@@ -1,5 +1,9 @@
+service smart_charger /vendor/bin/smart_charger
+    class main
+    user root
 
 on property:vold.decrypt=trigger_restart_framework
+
 
 on boot
     # CABC feature
@@ -60,3 +64,12 @@ on post-fs
     chmod 0664 /sys/class/power_supply/battery/device/force_chg_fail_clear
     chown mot_tcmd root /sys/class/power_supply/ext-charger/usb_otg
     chmod 0664 /sys/class/power_supply/ext-charger/usb_otg
+
+on late-fs
+    # Start services for bootanim
+    start surfaceflinger
+    start bootanim
+    start vendor.hwcomposer
+    start vendor.configstore-hal
+    start vendor.qti.hardware.display.allocator
+    start vendor.light-1-0

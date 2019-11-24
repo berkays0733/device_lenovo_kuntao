@@ -122,7 +122,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Dark
 PRODUCT_PROPERTY_OVERRIDES += \
-		debug.hwui.force_dark=true
+    debug.hwui.force_dark=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -162,3 +162,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+
+# Maintainer
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.havoc.maintainer=SVB
