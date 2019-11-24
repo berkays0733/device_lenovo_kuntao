@@ -121,8 +121,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.bservice_enable=true
 
 # Dark
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.hwui.force_dark=true
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    debug.hwui.force_dark=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
