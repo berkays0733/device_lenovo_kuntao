@@ -386,7 +386,7 @@ PRODUCT_COPY_FILES += \
 # Telephony
 PRODUCT_PACKAGES += \
 		telephony-ext \
-		ims-ext-common_system \
+		ims-ext-common \
     rild \
     libprotobuf-cpp-full \
     qti-telephony-hidl-wrapper \
@@ -396,8 +396,7 @@ PRODUCT_PACKAGES += \
     ims_ext_common.xml
 
 PRODUCT_BOOT_JARS += \
-    telephony-ext \
-		ims-ext-common_system
+    telephony-ext
 
 # Thermal
 PRODUCT_PACKAGES += \
