@@ -1,1 +1,1 @@
-type vfsspi_service, service_manager_type;
+type vfsspi_service,                service_manager_type;
