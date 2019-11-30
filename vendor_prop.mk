@@ -92,7 +92,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     log.tag.synaFpHal=W \
     log.tag.SynapticsLIB=W \
     log.tag.synaTransport=W \
-    persist.vendor.fp.gesture=0
+    persist.vendor.fp.gesture=1
 
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -166,3 +166,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Maintainer
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.havoc.maintainer=SVB
+
+# USB debugging
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp,adb \
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    ro.debuggable=1
