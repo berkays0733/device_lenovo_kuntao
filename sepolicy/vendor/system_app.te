@@ -1,0 +1,2 @@
+allow system_app time_daemon:unix_stream_socket connectto;
+allow system_app hal_rcsservice:binder { call transfer };
