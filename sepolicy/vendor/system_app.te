@@ -1,1 +1,5 @@
 allow system_app vendor_file:file { getattr open read };
+allow system_app time_daemon:unix_stream_socket connectto;
+allow system_app hal_rcsservice:binder { call transfer };
+allow system_app dpmservice:service_manager add;
+allow system_app cne_service:service_manager add;

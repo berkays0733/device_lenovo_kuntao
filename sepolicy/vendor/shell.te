@@ -1,0 +1,4 @@
+allow shell adsprpc_prop:file { getattr open read };
+allow shell apexd_prop:file { getattr open read };
+allow shell bg_boot_complete_prop:file { getattr open read };
+allow shell bg_daemon_prop:file { getattr open read };

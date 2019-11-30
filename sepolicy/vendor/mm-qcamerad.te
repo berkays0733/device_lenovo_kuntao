@@ -8,3 +8,5 @@ allow mm-qcamerad system_server:unix_stream_socket { read write };
 allow mm-qcamerad vendor_camera_data_file:file { r_file_perms create_file_perms };
 
 set_prop(mm-qcamerad, vendor_camera_prop);
+
+allow hal_camera_default sysfs_kgsl:file { getattr open read };

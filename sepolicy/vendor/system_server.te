@@ -6,6 +6,7 @@ r_dir_file(system_server, keylayout_file)
 
 allow system_server vfmService:process signull;
 
+
 allow system_server vfsspi_device:dir search;
 allow system_server vfsspi_device:fifo_file rw_file_perms;
 
@@ -16,3 +17,8 @@ typeattribute system_server system_executes_vendor_violators;
 allow system_server vfsspi_vendor_file:file { execute getattr open read };
 
 set_prop(system_server, sensors_prop);
+
+allow system_server adsprpc_prop:file {getattr open read};
+allow system_server init:binder { transfer call };
+allow system_server apexd_prop:file {getattr open read};
+allow system_server sysfs_kgsl:file {getattr open read};
