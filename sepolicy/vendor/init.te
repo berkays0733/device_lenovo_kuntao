@@ -1,1 +1,2 @@
 allow init vendor_file:file { execute };
+allow init system_server:binder { transfer call };
