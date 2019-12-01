@@ -22,3 +22,4 @@ allow system_server adsprpc_prop:file {getattr open read};
 allow system_server init:binder { transfer call };
 allow system_server apexd_prop:file {getattr open read};
 allow system_server sysfs_kgsl:file {getattr open read};
+allow system_server sysfs_kgsl:lnk_file {getattr open read};
