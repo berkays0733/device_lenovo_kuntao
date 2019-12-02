@@ -121,8 +121,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.sys.fw.bservice_enable=true
 
 # Dark
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.hwui.force_dark=true
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    debug.hwui.force_dark=true
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -166,3 +166,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Maintainer
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.havoc.maintainer=SVB
+
+# USB debugging
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp,adb \
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    ro.debuggable=1

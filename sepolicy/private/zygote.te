@@ -1,0 +1,2 @@
+allow zygote system_file:file { getattr open read write };
+allow zygote system_file:dir { create setattr write rmdir remove_name add_name };

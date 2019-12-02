@@ -1,0 +1,4 @@
+allow hal_camera_default system_file:file { read write open getattr execute };
+allow hal_camera_default system_file:lnk_file { read write open getattr execute };
+allow hal_camera_default sysfs_kgsl:file { read write open getattr execute };
+allow hal_camera_default sysfs_kgsl:lnk_file { read write open getattr execute };
