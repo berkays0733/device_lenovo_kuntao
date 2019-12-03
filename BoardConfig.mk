@@ -125,7 +125,7 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 BOARD_USES_QCNE := true
 
 # Gestures
-TARGET_GESTURES_NODE := "/proc/touchpanel/gesture_enable"
+TARGET_GESTURES_NODE := "/sys/board_properties/tpd_suspend_status"
 
 # GPU
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
