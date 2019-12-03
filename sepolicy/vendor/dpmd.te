@@ -1,0 +1,2 @@
+allow dpmd device:dir { write add_name setattr };
+allow dpmd device:file { read write open lock create };

@@ -1,2 +1,9 @@
 allow init vendor_file:file { execute };
 allow init system_server:binder { transfer call };
+allow init sysfs:file { open write };
+allow init sysfs_graphics:file { open write };
+allow init vendor_file:file execute_no_trans;
+allow init system_file:file execute_no_trans;
+allow init hwservicemanager:binder { call transfer };
+allow init sysfs_sensors:file { rw_file_perms setattr };
+allow init sysfs_sensors:lnk_file read;

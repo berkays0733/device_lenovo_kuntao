@@ -1,0 +1,4 @@
+allow hal_graphics_composer_default system_file:file { read write open getattr execute };
+allow hal_graphics_composer_default system_file:lnk_file { read write open getattr execute };
+allow hal_graphics_composer_default sysfs_kgsl:file { read write open getattr execute };
+allow hal_graphics_composer_default sysfs_kgsl:lnk_file { read write open getattr execute };

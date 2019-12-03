@@ -1,0 +1,2 @@
+allow hal_keymaster_qti system_file:file { read getattr open write execute };
+allow hal_keymaster_qti system_file:lnk_file { read getattr open write execute };

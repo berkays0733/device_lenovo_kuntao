@@ -126,7 +126,7 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 BOARD_USES_QCNE := true
 
 # Gestures
-TARGET_GESTURES_NODE := "/proc/touchpanel/gesture_enable"
+TARGET_GESTURES_NODE := "/sys/board_properties/tpd_suspend_status"
 
 # GPU
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
@@ -154,7 +154,7 @@ BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3
 BOARD_KERNEL_CMDLINE += lpm_levels.sleep_disabled=1 androidboot.bootdevice=7824900.sdhci
 BOARD_KERNEL_CMDLINE += loop.max_part=7
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+# BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_OFFSET = 0x00008000
 BOARD_KERNEL_PAGESIZE := 2048
@@ -164,6 +164,9 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CONFIG := lineageos_kuntao_defconfig
 TARGET_KERNEL_SOURCE := kernel/lenovo/msm8953
 TARGET_KERNEL_VERSION := 3.18
+
+# SELinux
+PRIVATE_EXCLUDE_BUILD_TEST := true
 
 # Media
 TARGET_USES_MEDIA_EXTENSIONS := true
@@ -216,6 +219,7 @@ VENDOR_SECURITY_PATCH := 2017-11-01
 
 # SELinux
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 SELINUX_IGNORE_NEVERALLOWS := true
