@@ -452,7 +452,7 @@ if [ "$ProductName" == "msmnile" ] || [ "$ProductName" == "kona" ] ; then
       configure_zram_parameters
       configure_read_ahead_kb_values
       echo 0 > /proc/sys/vm/page-cluster
-      echo 100 > /proc/sys/vm/swappiness
+      echo 10 > /proc/sys/vm/swappiness
 else
     arch_type=`uname -m`
     MemTotalStr=`cat /proc/meminfo | grep MemTotal`
