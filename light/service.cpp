@@ -16,9 +16,7 @@
 
 #define LOG_TAG "android.hardware.light@2.0-service.kuntao"
 
-#include <android-base/logging.h>
 #include <hidl/HidlTransportSupport.h>
-#include <utils/Errors.h>
 
 #include "Light.h"
 
@@ -40,32 +38,28 @@ int main() {
 
     std::ofstream lcdBacklight(kLcdBacklightPath);
     if (!lcdBacklight) {
-        LOG(ERROR) << "Failed to open " << kLcdBacklightPath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
+        ALOGE("Failed to open kLcdBacklightPath.");
+        return 1;
     }
 
     std::ifstream lcdMaxBacklight(kLcdMaxBacklightPath);
     if (!lcdMaxBacklight) {
-        LOG(ERROR) << "Failed to open " << kLcdMaxBacklightPath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
+        ALOGE("Failed to open kLcdMaxBacklightPath.");
+        return 1;
     } else {
         lcdMaxBacklight >> lcdMaxBrightness;
     }
 
     std::ofstream rgbLed(kRgbLedPath);
     if (!rgbLed) {
-        LOG(ERROR) << "Failed to open " << kRgbLedPath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
+        ALOGE("Failed to open  kRgbLedPath.");
+        return 1;
     }
 
     std::ofstream rgbBlink(kRgbBlinkPath);
     if (!rgbBlink) {
-        LOG(ERROR) << "Failed to open " << kRgbBlinkPath << ", error=" << errno
-                   << " (" << strerror(errno) << ")";
-        return -errno;
+        ALOGE("Failed to open  kRgbBlinkPath.");
+        return 1;
     }
 
     android::sp<ILight> service = new Light(
@@ -77,13 +71,13 @@ int main() {
     android::status_t status = service->registerAsService();
 
     if (status != android::OK) {
-        LOG(ERROR) << "Cannot register Light HAL service";
+        ALOGE("Cannot register Light HAL service.");
         return 1;
     }
 
-    LOG(INFO) << "Light HAL Ready.";
+    ALOGI("Light HAL service ready.");
     joinRpcThreadpool();
     // Under normal cases, execution will not reach this line.
-    LOG(ERROR) << "Light HAL failed to join thread pool.";
+    ALOGE("Light HAL failed to join thread pool.");
     return 1;
 }
