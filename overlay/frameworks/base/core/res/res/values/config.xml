@@ -714,7 +714,7 @@
 
     <!-- Whether the notification LED should repeatedly flash when a notification is
     * pending. The value is boolean (1 or 0).-->
-    <bool name="notification_light_pulse">true</bool>
+    <bool name="def_notification_pulse">true</bool>
 
     <!-- Whether device ignores the RSSNR signal implementation -->
     <bool name="config_ignoreRssnrSignalLevel">true</bool>
