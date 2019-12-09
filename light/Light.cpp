@@ -17,6 +17,7 @@
 #define LOG_TAG "LightService"
 
 #include "Light.h"
+#include <android-base/logging.h>
 
 namespace {
 
