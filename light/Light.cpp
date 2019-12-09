@@ -96,8 +96,9 @@ void Light::setLcdBacklight(const LightState& state) {
     // If max panel brightness is not the default (255),
     // apply linear scaling across the accepted range.
     if (mLcdBacklight.second != DEFAULT_MAX_BRIGHTNESS) {
-        brightness = brightness * mLcdBacklight.second / DEFAULT_MAX_BRIGHTNESS;
-        ALOGV("scaling brightness.");
+      int old_brightness = brightness;
+      brightness = brightness * mLcdBacklight.second / DEFAULT_MAX_BRIGHTNESS;
+      LOG(VERBOSE) << "scaling brightness " << old_brightness << " => " << brightness;
     }
 
     mLcdBacklight.first << brightness << std::endl;
