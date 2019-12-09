@@ -1528,7 +1528,7 @@
 
     <path name="speaker-and-bt-sco-wb">
         <path name="speaker" />
-        <path name="bt-sco-headset-wb">
+        <path name="bt-sco-headset-wb" />
     </path>
 
 
