@@ -33,6 +33,8 @@ on boot
     chmod 0666 /sys/class/power_supply/ext-charger/otg_usb_short
     #lenovo-sw weiweij added for file point access end
 
+    chown system system /sys/kernel/hbtp/display_pwr
+
 
 on post-fs
     # Proximity and Light sensor

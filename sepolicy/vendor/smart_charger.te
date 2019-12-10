@@ -29,7 +29,6 @@ allow smart_charger {
 }:file rw_file_perms;
 
 allow smart_charger sysfs:file { open read write ioctl };
-allow smart_charger dash_device:chr_file { open read write ioctl };
 allow smart_charger rootfs:file { entrypoint read execute getattr };
 
 allow smart_charger self:capability sys_resource;
