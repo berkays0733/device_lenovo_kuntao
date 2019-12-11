@@ -20,12 +20,15 @@ on boot
     mkdir /dev/validity 0775 system system
     chmod 0660 /sys/bus/platform/devices/soc:fingerprint@0/shutdown
     chown system system /sys/bus/platform/devices/soc:fingerprint@0/shutdown
+    setprop persist.vendor.fp.gesture 1
     start vendor.vfmService
 
 on property:vendor.sys.listeners.registered=true
+    setprop persist.vendor.fp.gesture 1
     start vendor.vfmService
 
 on property:vold.decrypt=trigger_restart_framework
+    setprop persist.vendor.fp.gesture 1
     start vendor.vfmService
 
 on post-fs-data
