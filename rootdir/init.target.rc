@@ -123,7 +123,8 @@ on property:vendor.ims.DATA_DAEMON_STATUS=1
     restart vendor.ims_rtp_daemon
 
 on charger
-    setprop sys.usb.configfs 0
+    setprop sys.usb.configfs 1
+    setprop sys.usb.config adb
     start qcom-post-boot
     start vendor.power_off_alarm
 
