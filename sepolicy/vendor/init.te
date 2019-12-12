@@ -16,6 +16,7 @@ allow init property_socket:sock_file write;
 allow init { domain -lmkd -crash_dump }:process noatsecure;
 allow init system_data_file:sock_file write;
 allow init system_server:fd use;
+allow init system_server:binder { call transfer };
 allow init system_server:unix_stream_socket { read write };
 allow init adsprpcd_file:filesystem { mount relabelfrom relabelto };
 allow init sysfs:file setattr;
@@ -43,6 +44,9 @@ allow init kernel:system { module_request };
 allow init sysfs:dir { create_dir_perms };
 allow init sysfs:file { create_file_perms };
 allow init system_file:dir { relabelfrom };
+
+allow init sysfs_usb_supply:file { open read write };
+allow init sysfs_battery_supply:file { open read write };
 
 allow init {
  adbd
