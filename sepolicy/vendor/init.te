@@ -116,7 +116,6 @@ allow init {
  surfaceflinger
  tee
  thermal-engine
- thermalserviced
  time_daemon
  tombstoned
  toolbox
