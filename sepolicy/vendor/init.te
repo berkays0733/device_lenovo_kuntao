@@ -7,3 +7,128 @@ allow init system_file:file execute_no_trans;
 allow init hwservicemanager:binder { call transfer };
 allow init sysfs_sensors:file { rw_file_perms setattr };
 allow init sysfs_sensors:lnk_file read;
+allow init rootfs:file mounton;
+allow init adsprpcd_file:filesystem { mount relabelfrom relabelto };
+
+# leds
+allow init sysfs_leds:lnk_file read;
+allow init property_socket:sock_file write;
+allow init { domain -lmkd -crash_dump }:process noatsecure;
+allow init system_data_file:sock_file write;
+allow init system_server:fd use;
+allow init system_server:unix_stream_socket { read write };
+allow init adsprpcd_file:filesystem { mount relabelfrom relabelto };
+allow init sysfs:file setattr;
+allow init sysfs_leds:lnk_file r_file_perms;
+
+allow init self:capability2 block_suspend;
+allow init socket_device:sock_file { create setattr unlink };
+
+# Unsure what init is doing here
+allow init app_data_file:dir setattr;
+allow init sdcardd_exec:file getattr;
+
+allow init firmware_file:dir mounton;
+allow init firmware_file:blk_file { getattr read open };
+allow init fsg_file:dir mounton;
+allow init pstorefs:dir mounton;
+
+allow init fingerprintd_data_file:chr_file { lock };
+allow init fingerprintd_data_file:file { lock };
+allow init fingerprintd:process { signull };
+allow init device:fifo_file { lock };
+allow init tee_device:chr_file { read write ioctl open };
+allow init kernel:system { module_request };
+
+allow init sysfs:dir { create_dir_perms };
+allow init sysfs:file { create_file_perms };
+allow init system_file:dir { relabelfrom };
+
+allow init {
+ adbd
+ adsprpcd
+ atfwd
+ audioserver
+ bootanim
+ bootstat
+ cameraserver
+ cnd
+ dpmd
+ drmserver
+ energyawareness
+ fsck
+ hal_alarm_qti_default
+ hal_audio_default
+ hal_bluetooth_qti
+ hal_camera_default
+ hal_cas_default
+ hal_configstore_default
+ hal_drm_default
+ hal_drm_clearkey
+ hal_drm_widevine
+ hal_dpmQmiMgr
+ hal_fingerprint_default
+ hal_gatekeeper_default
+ hal_gnss_qti
+ hal_graphics_allocator_default
+ hal_graphics_composer_default
+ hal_health_default
+ hal_imsrtp
+ hal_keymaster_default
+ hal_light_default
+ hal_memtrack_default
+ hal_nfc_default
+ hal_perf_default
+ hal_power_default
+ hal_rcsservice
+ hal_sensors_default
+ hal_usb_default
+ hal_vibrator_default
+ hal_wifi_default
+ hal_wifi_supplicant_default
+ healthd
+ hwservicemanager
+ ims
+ incidentd
+ installd
+ ipacm
+ irsc_util
+ keystore
+ lmkd
+ location
+ logd
+ mediacodec
+ mediadrmserver
+ mediaextractor
+ mediametrics
+ mediaserver
+ mm-qcamerad
+ msm_irqbalanced
+ netd
+ netmgrd
+ qti
+ qti_init_shell
+ rfs_access
+ rild
+ rmt_storage
+ servicemanager
+ smart_charger
+ surfaceflinger
+ tee
+ thermal-engine
+ thermalserviced
+ time_daemon
+ tombstoned
+ toolbox
+ tzdatacheck
+ ueventd
+ vdc
+ vendor_init
+ vendor_per_mgr
+ vfmService
+ vndservicemanager
+ vold
+ wcnss_service
+ wificond
+ wifidisplayhalservice_qti
+ zygote}:process { noatsecure };

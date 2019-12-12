@@ -30,7 +30,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
       <name>android.hardware.bluetooth.audio</name>
       <version>2.0</version>
       <interface>
-          <name>IBluetoothAudioProvidersFactory</name>                                                                                                                                                          
+          <name>IBluetoothAudioProvidersFactory</name>
           <instance>default</instance>
       </interface>
     </hal>
@@ -272,18 +272,11 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.bluetooth_audio</name>
-        <version>2.0</version>
-        <interface>
-            <name>IBluetoothAudioProvidersFactory</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
-        <name>vendor.qti.hardware.btconfigstore</name>
+        <name>vendor.qti.hardware.servicetracker</name>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
-            <name>IBTConfigStore</name>
+            <name>IServicetracker</name>
             <instance>default</instance>
         </interface>
     </hal>

@@ -1,5 +1,5 @@
 service smart_charger /vendor/bin/smart_charger
-    class main
+    class core
     user root
 
 on property:vold.decrypt=trigger_restart_framework
@@ -27,6 +27,13 @@ on boot
     setprop sys.usb.rmnet.func.name "rmnet_bam"
     setprop sys.usb.rmnet.inst.name "rmnet"
     setprop sys.usb.dpl.inst.name "dpl"
+
+    #lenovo-sw weiweij added for file point access
+    chown system system /sys/class/power_supply/ext-charger/otg_usb_short
+    chmod 0666 /sys/class/power_supply/ext-charger/otg_usb_short
+    #lenovo-sw weiweij added for file point access end
+
+    chown system system /sys/kernel/hbtp/display_pwr
 
 
 on post-fs
@@ -73,3 +80,8 @@ on late-fs
     start vendor.configstore-hal
     start vendor.qti.hardware.display.allocator
     start vendor.light-1-0
+
+on property:sys.boot_completed=1
+    chown system system /sys/devices/soc/qpnp-smbcharger-18/power_supply/battery/subsystem/bms/hi_power
+    chmod 0664 /sys/devices/soc/qpnp-smbcharger-18/power_supply/battery/subsystem/bms/hi_power
+	  write /sys/devices/soc/qpnp-smbcharger-18/power_supply/battery/subsystem/bms/hi_power 1
