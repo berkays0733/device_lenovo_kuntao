@@ -3,3 +3,7 @@ type vendor_camera_prop, property_type;
 type cnd_prop, property_type;
 type diag_prop, property_type;
 type wfd_prop, property_type;
+
+type ctl_qvrd_prop, property_type;
+type post_boot_prop, property_type;
+type sf_lcd_density_prop, property_type;
