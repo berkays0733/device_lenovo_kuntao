@@ -1,0 +1,5 @@
+dontaudit shell fst_prop:file *;
+dontaudit shell vendor_wlc_prop:file *;
+dontaudit shell wfd_debug_prop:file *;
+dontaudit shell wfd_service_prop:file *;
+dontaudit shell wigig_core_prop:file *;
