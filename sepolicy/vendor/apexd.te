@@ -1,0 +1,1 @@
+allow apexd device:file create_file_perms;
