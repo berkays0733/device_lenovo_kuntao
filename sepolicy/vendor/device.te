@@ -1,1 +1,2 @@
 type vfsspi_device, dev_type;
+type factory_file, file_type;
