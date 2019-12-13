@@ -1,3 +1,4 @@
 allow netmgrd system_file:file lock;
 allow netmgrd system_file:file { execute getattr open read write };
 allow netmgrd system_file:file execute_no_trans;
+allow netmgrd sysfs:file { execute getattr open read write };

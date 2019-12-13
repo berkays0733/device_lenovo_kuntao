@@ -1,0 +1,2 @@
+allow ims sysfs:file rw_file_perms;
+allow hal_imsrtp sysfs:file { execute getattr open read write };

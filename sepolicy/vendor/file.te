@@ -17,3 +17,5 @@ type sysfs_oem, sysfs_type, fs_type;
 type sysfs_msm_subsys, sysfs_type, fs_type;
 type sysfs_fpc, sysfs_type, fs_type;
 type fsg_file, fs_type, contextmount_type;
+
+type wfd_vendor_data_file, file_type, data_file_type;

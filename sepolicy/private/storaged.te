@@ -1,0 +1,1 @@
+allow storaged device:file rw_file_perms;
