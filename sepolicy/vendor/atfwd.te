@@ -1,0 +1,1 @@
+allow atfwd sysfs:file { execute getattr open read write };
