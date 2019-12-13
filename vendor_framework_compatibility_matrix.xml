@@ -256,6 +256,14 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <hal format="hidl" optional="true">
+       <name>vendor.qti.hardware.tui_comm</name>
+       <version>1.0</version>
+       <interface>
+           <name>ITuiComm</name>
+           <instance>default</instance>
+       </interface>
+    </hal>
+    <hal format="hidl" optional="true">
         <name>vendor.qti.ims.callinfo</name>
         <version>1.0</version>
         <interface>
