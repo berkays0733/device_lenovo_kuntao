@@ -8,3 +8,13 @@ allow poweroffalarm_app sysfs_battery_supply:file rw_file_perms;
 
 allow poweroffalarm_app smart_charger:dir search;
 allow poweroffalarm_app smart_charger:file rw_file_perms;
+
+allow poweroffalarm_app mnt_vendor_file:dir r_dir_perms;
+allow poweroffalarm_app persist_file:dir search;
+allow poweroffalarm_app property_type:file read;
+
+allow poweroffalarm_app bg_boot_complete_prop:file read;
+allow poweroffalarm_app bg_daemon_prop:file read;
+allow poweroffalarm_app bluetooth_prop:file read;
+allow poweroffalarm_app bootloader_boot_reason_prop:file read;
+allow poweroffalarm_app boottime_prop:file read;
