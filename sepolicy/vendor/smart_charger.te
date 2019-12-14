@@ -31,7 +31,13 @@ allow smart_charger {
     sysfs_usb_supply
 }:file rw_file_perms;
 
+allow smart_charger {
+    sysfs_battery_supply
+    sysfs_usb_supply
+}:chr_file { open read write ioctl };
+
 allow smart_charger sysfs:file { open read write ioctl };
 allow smart_charger rootfs:file { entrypoint read execute getattr };
+allow smart_charger smart_charger_exec:chr_file { open read write ioctl };
 
 allow smart_charger self:capability sys_resource;
