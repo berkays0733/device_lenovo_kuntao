@@ -53,7 +53,6 @@ allow poweroffalarm_app {
  firstboot_prop
  fm_prop
  vendor_fp_gesture_prop
- fst_prop
  graphics_vulkan_prop
  hvdcp_opti_prop
  proc_vmstat
