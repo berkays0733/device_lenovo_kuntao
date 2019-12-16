@@ -51,3 +51,5 @@ allow system_server sensors_device:chr_file { ioctl open read };
 allow system_server vendor_file:file { getattr open read execute };
 
 allow system_server sysfs_livedisplay_tuneable:file rw_file_perms;
+
+allow system_server init:process { getsched signal };
