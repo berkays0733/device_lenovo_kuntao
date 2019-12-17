@@ -13,6 +13,8 @@ allow poweroffalarm_app mnt_vendor_file:dir create_dir_perms;
 allow poweroffalarm_app persist_file:dir create_dir_perms;
 allow poweroffalarm_app property_type:file create_file_perms;
 
+allow power_off_alarm kmsg_device:chr_file { rw_file_perms getattr };
+
 allow poweroffalarm_app {
  bg_boot_complete_prop
  bg_daemon_prop
