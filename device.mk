@@ -99,6 +99,10 @@ PRODUCT_PACKAGES += \
     camera.msm8953 \
     Snap
 
+# Dex
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI
+
 # HW crypto
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.cryptfshw@1.0-service-ioctl-qti
