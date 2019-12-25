@@ -156,8 +156,9 @@ PRODUCT_PACKAGES += \
 
 # FM
 PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
+		FM2 \
+		libqcomfm_jni \
+		qcom.fmradio
 
 # Ebtables
 PRODUCT_PACKAGES += \
