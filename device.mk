@@ -156,8 +156,9 @@ PRODUCT_PACKAGES += \
 
 # FM
 PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
+    FM2 \
+    libqcomfm_jni \
+    qcom.fmradio
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -365,6 +366,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.usb.rc \
+		init.qti.fm.sh \
     init.recovery.qcom.rc \
     init.target.rc \
     fstab.qcom \
