@@ -106,9 +106,7 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 
 # HW crypto
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.cryptfshw@1.0-service-ioctl-qti
-#    vendor.qti.hardware.cryptfshw@1.0-service-dlsym-qti
-
+    vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
