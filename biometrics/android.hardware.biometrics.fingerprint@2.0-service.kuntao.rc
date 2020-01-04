@@ -4,14 +4,15 @@ service vendor.fps_hal /vendor/bin/hw/android.hardware.biometrics.fingerprint@2.
     # /data is mounted.
     class late_start
     user system
-    group system input uhid
+    group system input uhid sdcard_rw
     writepid /dev/cpuset/system-background/tasks
     disabled
 
 service vendor.vfmService /vendor/bin/vfmService
     class core
     user system
-    group system
+    group system input uhid sdcard_rw
+    writepid /dev/cpuset/system-background/tasks
     disabled
 
 on boot
