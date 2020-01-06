@@ -9,3 +9,6 @@ allow system_app sysfs_fpc:dir search;
 allow system_app sysfs_fpc:file rw_file_perms;
 
 get_prop(system_app, wfd_prop)
+
+allow system_app sysfs_torch:dir search;
+allow system_app sysfs_torch:file rw_file_perms;

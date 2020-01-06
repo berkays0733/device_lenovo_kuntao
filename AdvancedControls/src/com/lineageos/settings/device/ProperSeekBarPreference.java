@@ -6,7 +6,7 @@ package com.lineageos.settings.device;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
-import androidx.content.res.TypedArrayUtils;
+import androidx.core.content.res.TypedArrayUtils;
 import androidx.preference.*;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -79,7 +79,7 @@ public class ProperSeekBarPreference extends Preference implements SeekBar.OnSee
 
     public ProperSeekBarPreference(Context context, AttributeSet attrs) {
         this(context, attrs, TypedArrayUtils.getAttr(context,
-                android.support.v7.preference.R.attr.preferenceStyle,
+                androidx.preference.R.attr.preferenceStyle,
                 android.R.attr.preferenceStyle));
     }
 
