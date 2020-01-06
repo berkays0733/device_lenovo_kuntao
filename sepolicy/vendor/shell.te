@@ -122,3 +122,6 @@ dontaudit shell vendor_xlat_prop:file *;
 dontaudit shell wifi_prop:file *;
 dontaudit qti_init_shell adsprpc_prop:file *;
 dontaudit qti_init_shell apexd_prop:file *;
+
+allow qti_init_shell sysfs_torch:dir search;
+allow qti_init_shell sysfs_torch:file rw_file_perms;
