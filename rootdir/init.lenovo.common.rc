@@ -35,6 +35,11 @@ on boot
 
     chown system system /sys/kernel/hbtp/display_pwr
 
+    #FM
+    chown system system /sys/module/radio_iris_transport/parameters/fmsmd_set
+    chmod 0660 /sys/module/radio_iris_transport/parameters/fmsmd_set
+
+
 
 on post-fs
     # Proximity and Light sensor
