@@ -186,6 +186,8 @@ firmware_directories /vendor/firmware_mnt/image/
 /dev/voice_svc            0660   system     audio
 /dev/avtimer              0660   system     audio
 
+/dev/btpower              0660   bluetooth  system
+
 # DVB devices
 /dev/dvb/adapter0/demux*  0440   media       media
 /dev/dvb/adapter0/dvr*    0660   media       media

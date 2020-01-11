@@ -44,7 +44,6 @@ dontaudit shell device_config_runtime_native_boot_prop:file *;
 dontaudit shell device_config_runtime_native_prop:file *;
 dontaudit shell dumpstate_options_prop:file *;
 dontaudit shell firstboot_prop:file *;
-dontaudit shell fm_prop:file *;
 dontaudit shell freq_prop:file *;
 dontaudit shell graphics_vulkan_prop:file *;
 dontaudit shell gsid_prop:file *;
