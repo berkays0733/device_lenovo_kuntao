@@ -1,0 +1,2 @@
+allow init hal_keymaster_hwservice:hwservice_manager add;
+allow init sysfs_io_sched_tuneable:file { setattr rw_file_perms };
