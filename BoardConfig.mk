@@ -203,6 +203,9 @@ BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 # Security patch level
 VENDOR_SECURITY_PATCH := 2017-11-01
 
+# SurfaceFlinger
+TARGET_USE_AOSP_SURFACEFLINGER := true
+
 # SELinux
 include device/qcom/sepolicy-legacy-um/sepolicy.mk
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public
