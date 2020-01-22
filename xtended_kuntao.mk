@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
-# Include Havoc common configuration
-include vendor/havoc/config/common_full_phone.mk
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1080
@@ -28,12 +26,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_m.mk)
 
+# Inherit some common Xtended stuff
+$(call inherit-product, vendor/xtended/config/common_full_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/lenovo/kuntao/device.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := havoc_kuntao
+PRODUCT_NAME := xtended_kuntao
 PRODUCT_DEVICE := kuntao
 PRODUCT_BRAND := Lenovo
 PRODUCT_MODEL := Lenovo P2a42

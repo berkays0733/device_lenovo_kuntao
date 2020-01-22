@@ -26,7 +26,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.audio.fluence.voicerec=false \
     persist.vendor.audio.hw.binder.size_kbyte=1024 \
     ro.vendor.audio.sdk.fluencetype=fluence \
-    ro.bluetooth.a2dp_offload.supported=true \
+		ro.bluetooth.a2dp_offload.supported=true \
     vendor.audio_hal.period_size=192 \
     vendor.audio.hw.aac.encoder=true \
     vendor.audio.offload.buffer.size.kb=64 \
@@ -102,7 +102,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     log.tag.synaFpHal=W \
     log.tag.SynapticsLIB=W \
     log.tag.synaTransport=W \
-    persist.vendor.fp.gesture=0
+    persist.vendor.fp.gesture=1
 
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -109,7 +109,7 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 
 # HW crypto
 PRODUCT_PACKAGES += \
-    vendor.qti.hardware.cryptfshw@1.0-service-qti.qsee
+    vendor.qti.hardware.cryptfshw@1.0-service-ioctl-qti
 
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
@@ -237,6 +237,7 @@ PRODUCT_PACKAGES += \
 
 # Lights
 PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-impl \
     android.hardware.light@2.0-service.kuntao
 
 # LiveDisplay

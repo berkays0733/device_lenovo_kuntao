@@ -54,7 +54,6 @@ on post-fs
     chown system system /persist/GSSET.txt
     chmod 0660 /persist/GSSET.txt
 
-
     chown mot_tcmd root /sys/class/power_supply/ext-charger/charge_enabled
     chmod 0664 /sys/class/power_supply/ext-charger/charge_enabled
     chown mot_tcmd root /sys/class/power_supply/ext-charger-dual/charge_enabled
