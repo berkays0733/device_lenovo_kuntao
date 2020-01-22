@@ -360,6 +360,7 @@ lib64/libvalAuth.so:vendor/lib64/libvalAuth.so|d956f850415a67e593ecad3ea9c3ff0bd
 lib64/libvfmAuth.so:vendor/lib64/libvfmAuth.so
 lib64/libvfmClient.so:vendor/lib64/libvfmClient.so
 lib64/libvfmtztransport.so:vendor/lib64/libvfmtztransport.so
+lib64/libvcsfp.so:vendor/lib64/libvcsfp.so
 
 
 # Gatekeeper - from tissot - PKQ1.180917.001.V10.0.12.0.PDHMIXM

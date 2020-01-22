@@ -53,13 +53,6 @@ public class KeyHandler implements DeviceKeyHandler {
 
         keyCode = event.getKeyCode();
         scanCode = event.getScanCode();
-        str = "KeyCode ScanCode";
-        Log.wtf(TAG, str);
-        str = "" + keyCode + " " + scanCode;
-        Log.wtf(TAG, str);
-        if (!hasSetupCompleted()) {
-            return event;
-        }
 
         if(keyCode == KeyEvent.KEYCODE_HOME) {
                 action = event.getAction();
@@ -83,10 +76,6 @@ public class KeyHandler implements DeviceKeyHandler {
         return event;
     }
 
-    private boolean hasSetupCompleted() {
-        return Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.USER_SETUP_COMPLETE, 0) != 0;
-    }
 
     private BroadcastReceiver mFingerprintGesturesReceiver = new BroadcastReceiver() {
         @Override
