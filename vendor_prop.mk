@@ -20,7 +20,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.deep_buffer.media=true \
     audio.offload.min.duration.secs=30 \
     audio.offload.video=true \
-		persist.bluetooth.a2dp_offload.disabled=false \
+    persist.bluetooth.a2dp_offload.disabled=true \
     persist.vendor.audio.fluence.speaker=false \
     persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicerec=false \
@@ -80,7 +80,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 		ro.surface_flinger.set_display_power_timer_ms=10000 \
 		ro.surface_flinger.set_touch_timer_ms=5000 \
 		ro.surface_flinger.set_idle_timer_ms=9000
-
 
 # Miracast
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -22,7 +22,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.provider.Settings;
 import android.view.KeyEvent;
-import android.util.Log;
+import android.os.Vibrator;
 
 
 import com.android.internal.os.DeviceKeyHandler;
@@ -30,6 +30,7 @@ import com.android.internal.os.DeviceKeyHandler;
 public class KeyHandler implements DeviceKeyHandler {
 
     private final Context mContext;
+    private final Vibrator mVibrator;
     private boolean mFingerprintGesturesEnabled = false;
     private static long time = 0;
     private static long time1 = 0;
@@ -42,6 +43,7 @@ public class KeyHandler implements DeviceKeyHandler {
         IntentFilter fingerprintGesturesFilter =
                 new IntentFilter(Constants.FINGERPRINT_GESTURES_INTENT);
         mContext.registerReceiver(mFingerprintGesturesReceiver, fingerprintGesturesFilter);
+        mVibrator = mContext.getSystemService(Vibrator.class);
     }
 
     @Override
@@ -53,13 +55,6 @@ public class KeyHandler implements DeviceKeyHandler {
 
         keyCode = event.getKeyCode();
         scanCode = event.getScanCode();
-        str = "KeyCode ScanCode";
-        Log.wtf(TAG, str);
-        str = "" + keyCode + " " + scanCode;
-        Log.wtf(TAG, str);
-        if (!hasSetupCompleted()) {
-            return event;
-        }
 
         if(keyCode == KeyEvent.KEYCODE_HOME) {
                 action = event.getAction();
@@ -77,16 +72,17 @@ public class KeyHandler implements DeviceKeyHandler {
            if((System.currentTimeMillis() - time) < 500) return null;
 
            /* Consume the fingerprint gestures key events if not enabled */
-            return !mFingerprintGesturesEnabled ? null : event;
+           if(mFingerprintGesturesEnabled){
+               if(scanCode == 562) mVibrator.vibrate(30);
+               else mVibrator.vibrate(50);
+               return event;
+           }
+           return null;
         }
 
         return event;
     }
 
-    private boolean hasSetupCompleted() {
-        return Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.USER_SETUP_COMPLETE, 0) != 0;
-    }
 
     private BroadcastReceiver mFingerprintGesturesReceiver = new BroadcastReceiver() {
         @Override
