@@ -74,7 +74,7 @@ public class KeyHandler implements DeviceKeyHandler {
            /* Consume the fingerprint gestures key events if not enabled */
            if(mFingerprintGesturesEnabled){
                if(scanCode == 562) mVibrator.vibrate(30);
-               else mVibrator.vibrate(50);
+               else mVibrator.vibrate(40);
                return event;
            }
            return null;
