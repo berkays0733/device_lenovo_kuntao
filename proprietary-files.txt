@@ -362,6 +362,10 @@ lib64/libvfmClient.so:vendor/lib64/libvfmClient.so
 lib64/libvfmtztransport.so:vendor/lib64/libvfmtztransport.so
 lib64/libvcsfp.so:vendor/lib64/libvcsfp.so
 
+# FM Radio - from LA.UM.8.6.r1-02600-89xx.0
+vendor/bin/fm_qsoc_patches|b288ea0c03e651d6f47c6fe833606f22dd656367
+vendor/bin/init.qti.fm.sh|0ac820dd85ebdf5fa73b5e971f6787ff35ceb65d
+vendor/etc/init/init.qti.fm.rc|4f5459058debbea76991e69f8522126f6655fd3b
 
 # Gatekeeper - from tissot - PKQ1.180917.001.V10.0.12.0.PDHMIXM
 vendor/lib64/hw/gatekeeper.msm8953.so|c1b386547234815a0d6116b5e4756de66075cd3f
