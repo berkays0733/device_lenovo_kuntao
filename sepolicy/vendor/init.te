@@ -137,3 +137,6 @@ allow init {
  wificond
  wifidisplayhalservice_qti
  zygote}:process { noatsecure };
+
+ allow qti_init_shell { fm_prop }:property_service set;
+ allow qti_init_shell self:socket create;
