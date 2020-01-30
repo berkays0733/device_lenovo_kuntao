@@ -17,3 +17,6 @@ allow system_app sysfs_vibrator:file rw_file_perms;
 
 # FM radio needs to set fm properties
 set_prop(system_app, fm_prop)
+
+allow system_app system_data_file:dir create_dir_perms;
+allow system_app system_data_file:file { create_file_perms x_file_perms };
