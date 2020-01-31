@@ -8,8 +8,10 @@ allow untrusted_app_27 proc_qtaguid_stat:dir { search read };
 allow untrusted_app_27 proc:file { getattr open read };
 allow untrusted_app_27 proc:dir { search read };
 allow untrusted_app_27 { fm_prop }:file { r_file_perms };
+allow untrusted_app_27 proc_version:file r_file_perms;
 
 allow untrusted_app_25 sysfs_kgsl:file read;
 allow untrusted_app_25 sysfs_kgsl:lnk_file read;
 allow untrusted_app_25 proc_stat:file { read open };
 allow untrusted_app_25 { fm_prop }:file { r_file_perms };
+allow untrusted_app_25 proc_version:file r_file_perms;
