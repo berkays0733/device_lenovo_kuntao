@@ -5,5 +5,5 @@ allow untrusted_app sysfs_kgsl:lnk_file read;
 allow untrusted_app hal_memtrack_hwservice:binder { call };
 dontaudit untrusted_app hal_memtrack_hwservice:hwservice_manager { find };
 allow untrusted_app proc:file { open getattr read };
-
 allow untrusted_app { fm_prop theme_prop }:file { r_file_perms };
+allow untrusted_app proc_version:file r_file_perms;
