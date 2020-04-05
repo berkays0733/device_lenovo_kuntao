@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2019 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,13 +20,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.deep_buffer.media=true \
     audio.offload.min.duration.secs=30 \
     audio.offload.video=true \
-    persist.bluetooth.a2dp_offload.disabled=true \
     persist.vendor.audio.fluence.speaker=false \
-    persist.vendor.audio.fluence.voicecall=false \
+    persist.vendor.audio.fluence.voicecall=true \
     persist.vendor.audio.fluence.voicerec=false \
-    persist.vendor.audio.hw.binder.size_kbyte=1024 \
-    ro.vendor.audio.sdk.fluencetype=fluence \
-		ro.bluetooth.a2dp_offload.supported=true \
+    ro.vendor.audio.sdk.fluencetype=none \
     vendor.audio_hal.period_size=192 \
     vendor.audio.hw.aac.encoder=true \
     vendor.audio.offload.buffer.size.kb=64 \
@@ -37,8 +34,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     vendor.audio.offload.track.enable=true \
     vendor.audio.parser.ip.buffer.size=262144 \
     vendor.audio.playback.mch.downsample=true \
+    vendor.audio.pp.asphere.enabled=false \
     vendor.audio.safx.pbe.enabled=true \
-    vendor.voice.path.for.pcm.voip=true
+    vendor.voice.path.for.pcm.voip=true \
+    persist.vendor.audio.hw.binder.size_kbyte=1024
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -46,7 +45,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
-    vendor.camera.hal1.packagelist=com.android.facelock \
     persist.vendor.camera.display.umax=1920x1080 \
     persist.vendor.camera.display.lmax=1280x720 \
     camera.lowpower.record.enable=1 \
@@ -57,37 +55,39 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     log.tag.smart_charger=W
 
-# CNE
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.cne.feature=1
-    persist.dpm.feature=1
-
-# Display
+# Cast
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_hwc_vds=1 \
-    ro.opengles.version=196610 \
-    ro.sf.lcd_density=480 \
-    ro.vendor.display.cabl=0 \
-    debug.sdm.support_writeback=0 \
-    vendor.display.disable_skip_validate=1 \
-    vendor.display.enable_default_color_mode=1 \
-    vendor.gralloc.enable_fb_ubwc=1
-
-# SurfaceFlinger
-PRODUCT_PROPERTY_OVERRIDES += \
-		ro.surface_flinger.protected_contents=true \
-		ro.surface_flinger.use_smart_90_for_video=true \
-		ro.surface_flinger.set_display_power_timer_ms=10000 \
-		ro.surface_flinger.set_touch_timer_ms=5000 \
-		ro.surface_flinger.set_idle_timer_ms=9000
-
-# Miracast
-PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.enable_vds=1 \
     persist.sys.wfd.nohdcp=1 \
     persist.debug.wfd.enable=1 \
     persist.sys.wfd.virtual=0 \
-    vendor.gralloc.disable_wb_ubwc=1
+    vendor.video.disable.ubwc=1 \
+    vendor.gralloc.disable_wb_ubwc=1 \
+    vendor.gralloc.enable_fb_ubwc=1
+
+# CNE-DPM
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.cne.feature=1 \
+    persist.vendor.dpm.feature=0
+
+# Dalvik
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.heapstartsize=16m \
+    dalvik.vm.heapgrowthlimit=192m \
+    dalvik.vm.heapsize=512m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=2m \
+    dalvik.vm.heapmaxfree=8m
+
+# Display
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.opengles.version=196610 \
+    ro.vendor.display.cabl=0 \
+    debug.sdm.support_writeback=0 \
+    debug.sf.enable_gl_backpressure=1 \
+    vendor.display.disable_rotator_downscale=1 \
+    vendor.display.disable_skip_validate=1
 
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -106,8 +106,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Fm
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.fm.transmitter=false \
-	vendor.hw.fm.init=0
+    vendor.hw.fm.init=0
 
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -119,32 +118,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.vt_avail_ovr=1 \
     persist.vendor.qti.telephony.vt_cam_interface=1
 
-# IMS debug
-PRODUCT_PROPERTY_OVERRIDES += \
-		persist.vendor.ims.disableADBLogs=1 \
-		persist.vendor.ims.disableDebugLogs=1 \
-		persist.vendor.ims.disableIMSLogs=1 \
-		persist.vendor.ims.disableQXDMLogs=1
-
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.thumbnail.prefer_hw_codecs=true \
     media.stagefright.audio.sink=280 \
+    debug.stagefright.ccodec=0 \
+    debug.stagefright.omx_default_rank.sw-audio=1 \
+    debug.stagefright.omx_default_rank=0 \
     vendor.vidc.dec.downscalar_width=1920 \
     vendor.vidc.dec.downscalar_height=1088 \
     vendor.vidc.disable.split.mode=1 \
     vendor.vidc.enc.disable_bframes=1 \
     vendor.vidc.enc.disable_pframes=1 \
-    vendor.vidc.enc.disable.pq=true \
-    vendor.vidc.enc.narrow.searchrange=1 \
-    vendor.video.disable.ubwc=1
-
-# Memory optimizations
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.qti.sys.fw.bservice_enable=true
-
-# Dark
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    debug.hwui.force_dark=true
+    vendor.vidc.enc.narrow.searchrange=1
 
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -154,52 +140,32 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
-    persist.radio.multisim.config=dsds \
-		persist.vendor.radio.multisim_switch_support=true \
-    ro.telephony.default_network=9,1 \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
+    persist.radio.multisim.config=dsds \
+    ro.telephony.default_network=9,1 \
     persist.vendor.radio.custom_ecc=1 \
     persist.vendor.radio.rat_on=combine \
     persist.vendor.radio.sib16_support=1 \
-    persist.vendor.radio.atfwd.start=true \
-    persist.vendor.data.mode=concurrent \
-    ro.vendor.use_data_netmgrd=true \
-    persist.vendor.radio.add_power_save=1 \
-    persist.data.netmgrd.qos.enable=true \
     persist.vendor.radio.aosp_usr_pref_sel=true
 
-# SurfaceFlinger
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-		ro.surface_flinger.protected_contents=true
-
+# Netmgrd
 PRODUCT_PROPERTY_OVERRIDES += \
-		debug.sf.early_phase_offset_ns=1500000 \
-		debug.sf.early_app_phase_offset_ns=1500000 \
-		debug.sf.early_gl_phase_offset_ns=3000000 \
-		debug.sf.early_gl_app_phase_offset_ns=15000000
+    persist.vendor.data.iwlan.enable=true \
+    ro.vendor.use_data_netmgrd=true \
+    persist.data.netmgrd.qos.enable=true \
+    persist.vendor.data.mode=concurrent
 
-# Time services
+# Time Services
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.delta_time.enable=true
-
-# VoLTE hax
-PRODUCT_PROPERTY_OVERRIDES += \
-   persist.dbg.volte_avail_ovr=1 \
-   persist.dbg.vt_avail_ovr=1
 
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
 
-# Maintainer
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.havoc.maintainer=SVB
+# QC framework value-adds
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.va_aosp.support=1
 
-# USB debugging
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=adb \
-    ro.adb.secure=0 \
-    ro.secure=0 \
-    ro.debuggable=1 \
-		persist.service.adb.enable=1 \
-		persist.service.debuggable=1 \
+PRODUCT_ODM_PROPERTIES += \
+    ro.vendor.qti.va_odm.support=1

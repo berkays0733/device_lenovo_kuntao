@@ -20,6 +20,7 @@ set -e
 
 DEVICE=kuntao
 VENDOR=lenovo
+INITIAL_COPYRIGHT_YEAR=2017
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -59,12 +60,8 @@ fi
 setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT" false "$CLEAN_VENDOR"
 
 extract "$MY_DIR"/proprietary-files.txt "$SRC" "$SECTION"
-extract "$MY_DIR"/proprietary-files-twrp.txt "$SRC" "$SECTION"
+extract "$MY_DIR"/proprietary-files-qc.txt "$SRC" "$SECTION"
 
-BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
-
-TWRP_QSEECOMD="$BLOB_ROOT"/recovery/root/sbin/qseecomd
-
-sed -i "s|/system/bin/linker64|/sbin/linker64\x0\x0\x0\x0\x0\x0|g" "$TWRP_QSEECOMD"
+COMMON_BLOB_ROOT="$LINEAGE_ROOT"/vendor/"$VENDOR"/"$DEVICE"/proprietary
 
 "$MY_DIR"/setup-makefiles.sh
