@@ -43,13 +43,8 @@ setup_vendor "$DEVICE" "$VENDOR" "$LINEAGE_ROOT"
 write_headers
 
 write_makefiles "$MY_DIR"/proprietary-files.txt true
-
-# Blobs for TWRP data decryption
-cat << EOF >> "$BOARDMK"
-ifeq (\$(WITH_TWRP),true)
-TARGET_RECOVERY_DEVICE_DIRS += vendor/$VENDOR/$DEVICE/proprietary
-endif
-EOF
+echo "" >> "$PRODUCTMK"
+write_makefiles "$MY_DIR"/proprietary-files-qc.txt true
 
 # Finish
 write_footers

@@ -15,9 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_kuntao.mk
+    $(LOCAL_DIR)/lineage_kuntao.mk
 
-		COMMON_LUNCH_CHOICES := \
-				aosp_kuntao-eng \
-				aosp_kuntao-user \
-				aosp_kuntao-userdebug
+COMMON_LUNCH_CHOICES := \
+    lineage_kuntao-user \
+    lineage_kuntao-userdebug \
+    lineage_kuntao-eng
